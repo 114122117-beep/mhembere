@@ -1,124 +1,1258 @@
-﻿<!DOCTYPE html>
-<html class="dark" lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Architect of Intelligence</title>
-    <script src="./script.js"></script>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700&family=Inter:wght@400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    <link href="style.css" rel="stylesheet" />
+﻿<!-- Design System -->
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Architect of Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700&amp;family=Inter:wght@400&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#121414",
+                        "tertiary-fixed": "#e2e2e7",
+                        "inverse-primary": "#006970",
+                        "primary-fixed-dim": "#00dbe9",
+                        "surface-tint": "#00dbe9",
+                        "outline": "#849495",
+                        "on-primary-container": "#006970",
+                        "on-primary-fixed-variant": "#004f54",
+                        "surface-bright": "#383939",
+                        "on-surface": "#e3e2e2",
+                        "on-primary": "#00363a",
+                        "on-secondary-fixed-variant": "#474746",
+                        "error-container": "#93000a",
+                        "surface-container": "#1f2020",
+                        "surface-container-high": "#292a2a",
+                        "primary-container": "#00f0ff",
+                        "on-secondary-container": "#b7b5b4",
+                        "secondary-fixed": "#e5e2e1",
+                        "surface-variant": "#343535",
+                        "surface-container-lowest": "#0d0e0f",
+                        "surface-container-low": "#1b1c1c",
+                        "primary-fixed": "#7df4ff",
+                        "on-tertiary-container": "#5d5f63",
+                        "secondary-container": "#474746",
+                        "surface-dim": "#121414",
+                        "inverse-on-surface": "#303031",
+                        "secondary": "#c8c6c5",
+                        "tertiary-container": "#d9d9de",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "tertiary": "#f5f5fa",
+                        "on-tertiary-fixed": "#1a1c1f",
+                        "surface-container-highest": "#343535",
+                        "primary": "#dbfcff",
+                        "on-tertiary-fixed-variant": "#45474b",
+                        "error": "#ffb4ab",
+                        "on-background": "#e3e2e2",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "on-primary-fixed": "#002022",
+                        "surface": "#121414",
+                        "on-tertiary": "#2e3034",
+                        "on-secondary": "#313030",
+                        "inverse-surface": "#e3e2e2",
+                        "on-surface-variant": "#b9cacb",
+                        "outline-variant": "#3b494b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "unit": "4px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "code-sm": ["JetBrains Mono"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "code-sm": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display-lg": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .skeleton-border {
+            border: 1px solid theme('colors.surface-variant');
+        }
+        .skeleton-hover:hover {
+            border-color: theme('colors.primary-container');
+        }
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: theme('colors.primary-fixed-dim');
+            opacity: 0.5;
+            animation: scan 4s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { top: 100%; opacity: 0; }
+        }
+        
+        .transition-theme {
+            transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
+        }
+    </style>
 </head>
 <body class="bg-background text-on-surface font-body-md text-body-md min-h-screen flex flex-col md:flex-row transition-theme">
-    <!-- TopNavBar (Mobile) -->
-    <header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-background/90 dark:bg-background/90 text-primary-fixed-dim dark:text-primary-fixed-dim border-b border-outline-variant/30 backdrop-blur-md md:hidden">
-        <div class="text-label-caps font-label-caps font-bold tracking-widest text-primary-fixed-dim">INTELLECT_KINETIC</div>
-        <div class="flex items-center gap-4">
-            <button class="material-symbols-outlined text-primary-fixed-dim hover:text-primary-fixed-dim transition-colors duration-300">dark_mode</button>
-            <button class="material-symbols-outlined text-primary-fixed-dim hover:text-primary-fixed-dim transition-colors duration-300">terminal</button>
-        </div>
-    </header>
-    <!-- SideNavBar (Desktop) -->
-    <nav class="hidden md:flex flex-col h-screen fixed left-0 top-0 pt-20 pb-8 px-4 bg-surface-container-lowest dark:bg-surface-container-lowest text-primary-fixed-dim dark:text-primary-fixed-dim border-r border-outline-variant/30 w-64 z-40">
-        <div class="mb-8">
-            <h1 class="text-headline-md font-headline-md text-on-surface">INTELLECT_KINETIC</h1>
-            <div class="mt-4 flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden skeleton-border">
-                    <img class="w-full h-full object-cover" data-alt="A stylized, low-poly portrait avatar of an AI architect, utilizing deep charcoal and bright cyan tones, conveying a sense of technical mastery and rigorous management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYkj3qH5K-UZFbJTDAIkbKCoTrzYIY8Q_OPKgw8vQopTpe9ATe6ExdsUY0N8m3IXgYFGpRfisdrHDJHqY7W96OjSLYBgaUUVddN1NwBzL5n3BKguoAYEgiQQDuBrvyhx3jgVb4_7nxNgXq4pDF2T2cJniJVez-DREbHd3yGXHLBHTyttTOhz6MWj6Q2VPNb6-mHkRMztJQotXNcsTIpr5jvkQG8kbrgIPS_oYXD3o5ov5X0mvb70b7" />
-                </div>
-                <div>
-                    <div class="text-label-caps font-label-caps">AI Architect</div>
-                    <div class="text-code-sm font-code-sm text-on-surface-variant">Management &amp; Synthesis</div>
-                </div>
-            </div>
-        </div>
-        <ul class="flex flex-col gap-2 flex-grow">
-            <li><a class="flex items-center gap-3 p-3 bg-primary-container text-on-primary-container border-l-4 border-primary-fixed-dim shadow-inner font-label-caps text-label-caps" href="#"><span class="material-symbols-outlined">home</span>Home</a></li>
-            <li><a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant hover:translate-x-1 transition-transform duration-200 font-label-caps text-label-caps" href="#"><span class="material-symbols-outlined">science</span>Research</a></li>
-            <li><a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant hover:translate-x-1 transition-transform duration-200 font-label-caps text-label-caps" href="#"><span class="material-symbols-outlined">school</span>Education</a></li>
-            <li><a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant hover:translate-x-1 transition-transform duration-200 font-label-caps text-label-caps" href="#"><span class="material-symbols-outlined">description</span>Resume</a></li>
-        </ul>
-        <div class="mt-auto flex gap-4 text-on-surface-variant">
-            <button class="material-symbols-outlined hover:text-primary-fixed-dim transition-colors duration-300">dark_mode</button>
-            <button class="material-symbols-outlined hover:text-primary-fixed-dim transition-colors duration-300">terminal</button>
-        </div>
-    </nav>
-    <!-- Main Content Canvas -->
-    <main class="flex-grow pt-16 md:pt-0 md:ml-64 relative overflow-x-hidden">
-        <!-- Hero Section (Dark / Engine) -->
-        <section class="min-h-[819px] flex flex-col justify-center px-margin-mobile md:px-margin-desktop relative skeleton-border m-4 md:m-8 bg-surface-container-lowest overflow-hidden">
-            <div class="scan-line"></div>
-            <div class="absolute inset-0 bg-background/30 backdrop-blur-sm z-0"></div>
-            <div class="relative z-10 max-w-4xl">
-                <div class="text-label-caps font-label-caps text-primary-fixed-dim mb-4 flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-primary-container inline-block"></span>
+<!-- TopNavBar (Mobile) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-background/90 dark:bg-background/90 text-primary-fixed-dim dark:text-primary-fixed-dim border-b border-outline-variant/30 backdrop-blur-md md:hidden">
+<div class="text-label-caps font-label-caps font-bold tracking-widest text-primary-fixed-dim">INTELLECT_KINETIC</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary-fixed-dim hover:text-primary-fixed-dim transition-colors duration-300">dark_mode</button>
+<button class="material-symbols-outlined text-primary-fixed-dim hover:text-primary-fixed-dim transition-colors duration-300">terminal</button>
+</div>
+</header>
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col h-screen fixed left-0 top-0 pt-20 pb-8 px-4 bg-surface-container-lowest dark:bg-surface-container-lowest text-primary-fixed-dim dark:text-primary-fixed-dim border-r border-outline-variant/30 w-64 z-40">
+<div class="mb-8">
+<h1 class="text-headline-md font-headline-md text-on-surface">INTELLECT_KINETIC</h1>
+<div class="mt-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden skeleton-border">
+<img class="w-full h-full object-cover" data-alt="A stylized, low-poly portrait avatar of an AI architect, utilizing deep charcoal and bright cyan tones, conveying a sense of technical mastery and rigorous management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYkj3qH5K-UZFbJTDAIkbKCoTrzYIY8Q_OPKgw8vQopTpe9ATe6ExdsUY0N8m3IXgYFGpRfisdrHDJHqY7W96OjSLYBgaUUVddN1NwBzL5n3BKguoAYEgiQQDuBrvyhx3jgVb4_7nxNgXq4pDF2T2cJniJVez-DREbHd3yGXHLBHTyttTOhz6MWj6Q2VPNb6-mHkRMztJQotXNcsTIpr5jvkQG8kbrgIPS_oYXD3o5ov5X0mvb70b7"/>
+</div>
+<div>
+<div class="text-label-caps font-label-caps">AI Architect</div>
+<div class="text-code-sm font-code-sm text-on-surface-variant">Management &amp; Synthesis</div>
+</div>
+</div>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<li><a class="flex items-center gap-3 p-3 bg-primary-container text-on-primary-container border-l-4 border-primary-fixed-dim shadow-inner font-label-caps text-label-caps" href="#"><span class="material-symbols-outlined">home</span>Home</a></li>
+<li><a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant hover:translate-x-1 transition-transform duration-200 font-label-caps text-label-caps" href="#"><span class="material-symbols-outlined">science</span>Research</a></li>
+<li><a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant hover:translate-x-1 transition-transform duration-200 font-label-caps text-label-caps" href="#"><span class="material-symbols-outlined">school</span>Education</a></li>
+<li><a class="flex items-center gap-3 p-3 text-on-surface-variant hover:bg-surface-variant hover:translate-x-1 transition-transform duration-200 font-label-caps text-label-caps" href="#"><span class="material-symbols-outlined">description</span>Resume</a></li>
+</ul>
+<div class="mt-auto flex gap-4 text-on-surface-variant">
+<button class="material-symbols-outlined hover:text-primary-fixed-dim transition-colors duration-300">dark_mode</button>
+<button class="material-symbols-outlined hover:text-primary-fixed-dim transition-colors duration-300">terminal</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-16 md:pt-0 md:ml-64 relative overflow-x-hidden">
+<!-- Hero Section (Dark / Engine) -->
+<section class="min-h-[819px] flex flex-col justify-center px-margin-mobile md:px-margin-desktop relative skeleton-border m-4 md:m-8 bg-surface-container-lowest overflow-hidden">
+<div class="scan-line"></div>
+<div class="absolute inset-0 bg-background/30 backdrop-blur-sm z-0"></div>
+<div class="relative z-10 max-w-4xl">
+<div class="text-label-caps font-label-caps text-primary-fixed-dim mb-4 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container inline-block"></span>
                     SYSTEM INITIALIZED
                 </div>
-                <h2 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-on-surface mb-6 tracking-tight">
-                    Architect of <br /><span class="text-primary-fixed-dim">Intelligence</span>
-                </h2>
-                <div class="flex flex-wrap gap-4 mb-8">
-                    <div class="skeleton-border px-3 py-1 flex items-center gap-2 text-code-sm font-code-sm text-on-surface-variant">
-                        <span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<h2 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-on-surface mb-6 tracking-tight">
+                    Architect of <br/><span class="text-primary-fixed-dim">Intelligence</span>
+</h2>
+<div class="flex flex-wrap gap-4 mb-8">
+<div class="skeleton-border px-3 py-1 flex items-center gap-2 text-code-sm font-code-sm text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
                         Expert in AI Agents
                     </div>
-                    <div class="skeleton-border px-3 py-1 flex items-center gap-2 text-code-sm font-code-sm text-on-surface-variant">
-                        <span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<div class="skeleton-border px-3 py-1 flex items-center gap-2 text-code-sm font-code-sm text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
                         Student at Tzu Chi University
                     </div>
-                </div>
-                <p class="text-body-md font-body-md text-on-surface-variant max-w-2xl border-l border-outline-variant pl-4">
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-2xl border-l border-outline-variant pl-4">
                     Bridging the rigorous structures of management with the boundless potential of artificial intelligence. Engineering synthesis through technical depth and strategic clarity.
                 </p>
-                <div class="mt-12 flex gap-6">
-                    <button class="skeleton-border px-6 py-3 font-label-caps text-label-caps text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary-container transition-colors duration-300">
+<div class="mt-12 flex gap-6">
+<button class="skeleton-border px-6 py-3 font-label-caps text-label-caps text-primary-fixed-dim hover:bg-primary-container hover:text-on-primary-container transition-colors duration-300">
                         INITIALIZE_PROTOCOLS
                     </button>
-                </div>
-            </div>
-        </section>
-        <!-- Spacer -->
-        <div class="h-24 md:h-32"></div>
-        <!-- The Interface (Bright / Management) -->
-        <section class="min-h-screen bg-surface-tertiary text-on-tertiary transition-theme p-4 md:p-8" id="interface-section">
-            <div class="skeleton-border p-6 md:p-12 h-full bg-tertiary">
-                <div class="flex justify-between items-center mb-12 border-b border-outline-variant/30 pb-4">
-                    <h3 class="text-headline-md font-headline-md text-on-tertiary-fixed">Management &amp; Strategy</h3>
-                    <span class="text-code-sm font-code-sm text-on-tertiary-fixed-variant">SYS.VIEW: HIGH_LEVEL</span>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-                    <div class="skeleton-border p-6 hover:border-primary-container transition-colors duration-300 group cursor-pointer bg-surface/5">
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="material-symbols-outlined text-primary-fixed-dim text-3xl">psychology</span>
-                            <span class="text-code-sm font-code-sm text-on-surface-variant group-hover:text-primary-fixed-dim transition-colors">01</span>
-                        </div>
-                        <h4 class="text-headline-md font-headline-md text-on-tertiary-fixed mb-2 group-hover:translate-x-1 transition-transform">AI Strategy Synthesis</h4>
-                        <p class="text-body-md font-body-md text-on-tertiary-fixed-variant">Translating complex AI capabilities into actionable management frameworks. Designing systems that augment organizational intelligence.</p>
-                    </div>
-                    <div class="skeleton-border p-6 hover:border-primary-container transition-colors duration-300 group cursor-pointer bg-surface/5">
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="material-symbols-outlined text-primary-fixed-dim text-3xl">account_tree</span>
-                            <span class="text-code-sm font-code-sm text-on-surface-variant group-hover:text-primary-fixed-dim transition-colors">02</span>
-                        </div>
-                        <h4 class="text-headline-md font-headline-md text-on-tertiary-fixed mb-2 group-hover:translate-x-1 transition-transform">Agentic Architecture</h4>
-                        <p class="text-body-md font-body-md text-on-tertiary-fixed-variant">Structuring autonomous AI workflows. Building resilient pipelines that execute complex tasks with minimal human intervention.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Footer -->
-        <footer class="w-full py-12 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter bg-background dark:bg-background border-t border-outline-variant/30">
-            <div class="text-label-caps font-label-caps text-on-surface">
+</div>
+</div>
+</section>
+<!-- Spacer -->
+<div class="h-24 md:h-32"></div>
+<!-- The Interface (Bright / Management) -->
+<section class="min-h-screen bg-surface-tertiary text-on-tertiary transition-theme p-4 md:p-8" id="interface-section">
+<div class="skeleton-border p-6 md:p-12 h-full bg-tertiary">
+<div class="flex justify-between items-center mb-12 border-b border-outline-variant/30 pb-4">
+<h3 class="text-headline-md font-headline-md text-on-tertiary-fixed">Management &amp; Strategy</h3>
+<span class="text-code-sm font-code-sm text-on-tertiary-fixed-variant">SYS.VIEW: HIGH_LEVEL</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Bento Grid Items -->
+<div class="skeleton-border p-6 hover:border-primary-container transition-colors duration-300 group cursor-pointer bg-surface/5">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary-fixed-dim text-3xl">psychology</span>
+<span class="text-code-sm font-code-sm text-on-surface-variant group-hover:text-primary-fixed-dim transition-colors">01</span>
+</div>
+<h4 class="text-headline-md font-headline-md text-on-tertiary-fixed mb-2 group-hover:translate-x-1 transition-transform">AI Strategy Synthesis</h4>
+<p class="text-body-md font-body-md text-on-tertiary-fixed-variant">Translating complex AI capabilities into actionable management frameworks. Designing systems that augment organizational intelligence.</p>
+</div>
+<div class="skeleton-border p-6 hover:border-primary-container transition-colors duration-300 group cursor-pointer bg-surface/5">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary-fixed-dim text-3xl">account_tree</span>
+<span class="text-code-sm font-code-sm text-on-surface-variant group-hover:text-primary-fixed-dim transition-colors">02</span>
+</div>
+<h4 class="text-headline-md font-headline-md text-on-tertiary-fixed mb-2 group-hover:translate-x-1 transition-transform">Agentic Architecture</h4>
+<p class="text-body-md font-body-md text-on-tertiary-fixed-variant">Structuring autonomous AI workflows. Building resilient pipelines that execute complex tasks with minimal human intervention.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-12 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter bg-background dark:bg-background border-t border-outline-variant/30">
+<div class="text-label-caps font-label-caps text-on-surface">
                 © 2024 INTELLECT_KINETIC. SYSTEM_STATUS: OPERATIONAL
             </div>
-            <ul class="flex gap-6 text-code-sm font-code-sm text-outline">
-                <li><a class="hover:text-primary-fixed-dim hover:underline underline-offset-4 transition-colors" href="#">GitHub</a></li>
-                <li><a class="hover:text-primary-fixed-dim hover:underline underline-offset-4 transition-colors" href="#">LinkedIn</a></li>
-                <li><a class="hover:text-primary-fixed-dim hover:underline underline-offset-4 transition-colors" href="#">ResearchGate</a></li>
-                <li><a class="hover:text-primary-fixed-dim hover:underline underline-offset-4 transition-colors" href="#">Twitter</a></li>
-            </ul>
-        </footer>
-    </main>
-</body>
-</html>
+<ul class="flex gap-6 text-code-sm font-code-sm text-outline">
+<li><a class="hover:text-primary-fixed-dim hover:underline underline-offset-4 transition-colors" href="#">GitHub</a></li>
+<li><a class="hover:text-primary-fixed-dim hover:underline underline-offset-4 transition-colors" href="#">LinkedIn</a></li>
+<li><a class="hover:text-primary-fixed-dim hover:underline underline-offset-4 transition-colors" href="#">ResearchGate</a></li>
+<li><a class="hover:text-primary-fixed-dim hover:underline underline-offset-4 transition-colors" href="#">Twitter</a></li>
+</ul>
+</footer>
+</main>
+<script>
+        // Simple Intersection Observer to trigger bright mode when scrolling to the Management section
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        document.documentElement.classList.remove('dark');
+                    } else {
+                        document.documentElement.classList.add('dark');
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            const interfaceSection = document.getElementById('interface-section');
+            if(interfaceSection) {
+                observer.observe(interfaceSection);
+            }
+        });
+    </script>
+</body></html>
+
+<!-- Home | AI Portfolio -->
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Research &amp; Projects - INTELLECT_KINETIC</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&amp;family=Hanken+Grotesk:wght@500;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "background": "#121414",
+                      "tertiary-fixed": "#e2e2e7",
+                      "inverse-primary": "#006970",
+                      "primary-fixed-dim": "#00dbe9",
+                      "surface-tint": "#00dbe9",
+                      "outline": "#849495",
+                      "on-primary-container": "#006970",
+                      "on-primary-fixed-variant": "#004f54",
+                      "surface-bright": "#383939",
+                      "on-surface": "#e3e2e2",
+                      "on-primary": "#00363a",
+                      "on-secondary-fixed-variant": "#474746",
+                      "error-container": "#93000a",
+                      "surface-container": "#1f2020",
+                      "surface-container-high": "#292a2a",
+                      "primary-container": "#00f0ff",
+                      "on-secondary-container": "#b7b5b4",
+                      "secondary-fixed": "#e5e2e1",
+                      "surface-variant": "#343535",
+                      "surface-container-lowest": "#0d0e0f",
+                      "surface-container-low": "#1b1c1c",
+                      "primary-fixed": "#7df4ff",
+                      "on-tertiary-container": "#5d5f63",
+                      "secondary-container": "#474746",
+                      "surface-dim": "#121414",
+                      "inverse-on-surface": "#303031",
+                      "secondary": "#c8c6c5",
+                      "tertiary-container": "#d9d9de",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary-fixed": "#1c1b1b",
+                      "tertiary": "#f5f5fa",
+                      "on-tertiary-fixed": "#1a1c1f",
+                      "surface-container-highest": "#343535",
+                      "primary": "#dbfcff",
+                      "on-tertiary-fixed-variant": "#45474b",
+                      "error": "#ffb4ab",
+                      "on-background": "#e3e2e2",
+                      "on-error": "#690005",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "tertiary-fixed-dim": "#c6c6cb",
+                      "on-primary-fixed": "#002022",
+                      "surface": "#121414",
+                      "on-tertiary": "#2e3034",
+                      "on-secondary": "#313030",
+                      "inverse-surface": "#e3e2e2",
+                      "on-surface-variant": "#b9cacb",
+                      "outline-variant": "#3b494b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "gutter": "24px",
+                      "margin-desktop": "64px",
+                      "unit": "4px",
+                      "container-max": "1440px"
+              },
+              "fontFamily": {
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "code-sm": [
+                              "JetBrains Mono"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "code-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "72px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .skeleton-border { border: 1px solid var(--tw-colors-outline-variant); }
+        .skeleton-hover:hover { border-color: var(--tw-colors-primary-container); }
+        .scan-line {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: var(--tw-colors-primary-container);
+            opacity: 0.5;
+            animation: scan 3s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        .tech-chip-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: var(--tw-colors-primary-container);
+            display: inline-block;
+            margin-right: 6px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col md:flex-row">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col h-screen fixed left-0 top-0 pt-20 pb-8 px-4 bg-surface-container-lowest dark:bg-surface-container-lowest text-primary-fixed-dim dark:text-primary-fixed-dim border-r border-outline-variant/30 docked left-0 h-full w-64 z-50">
+<div class="mb-12 px-4">
+<h1 class="text-headline-md font-headline-md text-on-surface mb-2">AI Architect</h1>
+<p class="text-label-caps font-label-caps text-on-surface-variant">Management &amp; Synthesis</p>
+</div>
+<ul class="flex flex-col gap-2">
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded text-on-surface-variant hover:bg-surface-variant hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-caps font-label-caps">Home</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded bg-primary-container text-on-primary-container border-l-4 border-primary-fixed-dim inset-border shadow-inner hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="science">science</span>
+<span class="text-label-caps font-label-caps">Research</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded text-on-surface-variant hover:bg-surface-variant hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="school">school</span>
+<span class="text-label-caps font-label-caps">Education</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded text-on-surface-variant hover:bg-surface-variant hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="text-label-caps font-label-caps">Resume</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- TopNavBar (Mobile) -->
+<header class="md:hidden fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-background/90 dark:bg-background/90 text-primary-fixed-dim dark:text-primary-fixed-dim border-b border-outline-variant/30 backdrop-blur-md">
+<span class="text-label-caps font-label-caps font-bold tracking-widest text-primary-fixed-dim">INTELLECT_KINETIC</span>
+<div class="flex gap-4">
+<button class="hover:text-primary-fixed-dim transition-colors duration-300 active:scale-95 transition-transform"><span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span></button>
+<button class="hover:text-primary-fixed-dim transition-colors duration-300 active:scale-95 transition-transform"><span class="material-symbols-outlined" data-icon="terminal">terminal</span></button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 pt-20 md:pt-12 px-margin-mobile md:px-margin-desktop pb-24">
+<header class="mb-16 border-b border-outline-variant/30 pb-8">
+<h2 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-on-surface mb-4">Research &amp; Projects</h2>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-2xl">Deep dive into custom LLM development, LoRA optimizations, and autonomous AI agent architectures. High-contrast analysis of the engine.</p>
+</header>
+<!-- Technical Section: Dark Mode Enforced Design -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-24">
+<!-- LoRA Architecture Feature -->
+<div class="md:col-span-8 skeleton-border bg-surface-container-lowest p-8 relative overflow-hidden group skeleton-hover transition-colors duration-300">
+<div class="scan-line"></div>
+<div class="flex justify-between items-start mb-8 relative z-10">
+<div>
+<h3 class="text-headline-md font-headline-md text-primary-fixed-dim mb-2 group-hover:translate-x-1 transition-transform duration-300">LoRA Architecture Optimization</h3>
+<p class="text-code-sm font-code-sm text-on-surface-variant">Low-Rank Adaptation for Efficient LLM Tuning</p>
+</div>
+<span class="material-symbols-outlined text-primary-fixed-dim opacity-50" data-icon="memory">memory</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+<div class="space-y-4">
+<p class="text-body-md font-body-md text-on-surface">Implementing custom low-rank matrices to fine-tune 70B parameter models on consumer hardware. Achieving 95% of full fine-tuning performance with 2% of the VRAM requirement.</p>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="skeleton-border px-3 py-1 text-code-sm font-code-sm text-on-surface-variant flex items-center"><span class="tech-chip-dot"></span>PyTorch</span>
+<span class="skeleton-border px-3 py-1 text-code-sm font-code-sm text-on-surface-variant flex items-center"><span class="tech-chip-dot"></span>HuggingFace PEFT</span>
+<span class="skeleton-border px-3 py-1 text-code-sm font-code-sm text-on-surface-variant flex items-center"><span class="tech-chip-dot"></span>CUDA</span>
+</div>
+</div>
+<div class="skeleton-border p-4 bg-surface-container/50">
+<h4 class="text-label-caps font-label-caps text-on-surface-variant border-b border-outline-variant/30 pb-2 mb-4">Benchmark Deltas</h4>
+<table class="w-full text-code-sm font-code-sm">
+<tbody><tr class="border-b border-outline-variant/30">
+<td class="py-2 text-on-surface-variant">VRAM Usage</td>
+<td class="py-2 text-right text-primary-fixed-dim">-92%</td>
+</tr>
+<tr class="border-b border-outline-variant/30">
+<td class="py-2 text-on-surface-variant">Training Time</td>
+<td class="py-2 text-right text-primary-fixed-dim">-65%</td>
+</tr>
+<tr>
+<td class="py-2 text-on-surface-variant">MMLU Score</td>
+<td class="py-2 text-right text-on-surface">-1.2%</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<!-- Agent Creation Focus -->
+<div class="md:col-span-4 skeleton-border bg-surface-container-low p-8 relative overflow-hidden group skeleton-hover transition-colors duration-300 flex flex-col justify-between">
+<div class="relative z-10">
+<h3 class="text-headline-md font-headline-md text-on-surface mb-2 group-hover:translate-x-1 transition-transform duration-300">Autonomous Agents</h3>
+<p class="text-code-sm font-code-sm text-on-surface-variant mb-6">Multi-Agent Orchestration</p>
+<p class="text-body-md font-body-md text-on-surface-variant mb-8">Designing cognitive architectures where specialized LLMs interact, debate, and synthesize complex outputs via defined protocols.</p>
+</div>
+<button class="w-full skeleton-border py-3 text-label-caps font-label-caps text-primary-fixed-dim hover:bg-primary-container hover:text-surface-container-lowest transition-all duration-300 uppercase tracking-widest">
+                    View Architecture
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="md:ml-64 w-full py-12 px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter bg-background dark:bg-background text-primary-fixed-dim dark:text-primary-fixed-dim border-t border-outline-variant/30">
+<p class="text-code-sm font-code-sm text-outline">© 2024 INTELLECT_KINETIC. SYSTEM_STATUS: OPERATIONAL</p>
+<div class="flex gap-6">
+<a class="text-code-sm font-code-sm text-outline hover:text-primary-fixed-dim hover:underline underline-offset-4 active:opacity-80" href="#">GitHub</a>
+<a class="text-code-sm font-code-sm text-outline hover:text-primary-fixed-dim hover:underline underline-offset-4 active:opacity-80" href="#">LinkedIn</a>
+<a class="text-code-sm font-code-sm text-outline hover:text-primary-fixed-dim hover:underline underline-offset-4 active:opacity-80" href="#">ResearchGate</a>
+<a class="text-code-sm font-code-sm text-outline hover:text-primary-fixed-dim hover:underline underline-offset-4 active:opacity-80" href="#">Twitter</a>
+</div>
+</footer>
+</body></html>
+
+<!-- AI Research & Projects -->
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Education &amp; Management | Intellect Kinetic</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700&amp;family=Inter:wght@400&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#121414",
+                        "tertiary-fixed": "#e2e2e7",
+                        "inverse-primary": "#006970",
+                        "primary-fixed-dim": "#00dbe9",
+                        "surface-tint": "#00dbe9",
+                        "outline": "#849495",
+                        "on-primary-container": "#006970",
+                        "on-primary-fixed-variant": "#004f54",
+                        "surface-bright": "#383939",
+                        "on-surface": "#e3e2e2",
+                        "on-primary": "#00363a",
+                        "on-secondary-fixed-variant": "#474746",
+                        "error-container": "#93000a",
+                        "surface-container": "#1f2020",
+                        "surface-container-high": "#292a2a",
+                        "primary-container": "#00f0ff",
+                        "on-secondary-container": "#b7b5b4",
+                        "secondary-fixed": "#e5e2e1",
+                        "surface-variant": "#343535",
+                        "surface-container-lowest": "#0d0e0f",
+                        "surface-container-low": "#1b1c1c",
+                        "primary-fixed": "#7df4ff",
+                        "on-tertiary-container": "#5d5f63",
+                        "secondary-container": "#474746",
+                        "surface-dim": "#121414",
+                        "inverse-on-surface": "#303031",
+                        "secondary": "#c8c6c5",
+                        "tertiary-container": "#d9d9de",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "tertiary": "#f5f5fa",
+                        "on-tertiary-fixed": "#1a1c1f",
+                        "surface-container-highest": "#343535",
+                        "primary": "#dbfcff",
+                        "on-tertiary-fixed-variant": "#45474b",
+                        "error": "#ffb4ab",
+                        "on-background": "#e3e2e2",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "on-primary-fixed": "#002022",
+                        "surface": "#121414",
+                        "on-tertiary": "#2e3034",
+                        "on-secondary": "#313030",
+                        "inverse-surface": "#e3e2e2",
+                        "on-surface-variant": "#b9cacb",
+                        "outline-variant": "#3b494b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "unit": "4px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "label-caps": [
+                            "JetBrains Mono"
+                        ],
+                        "headline-md": [
+                            "Hanken Grotesk"
+                        ],
+                        "code-sm": [
+                            "JetBrains Mono"
+                        ],
+                        "display-lg": [
+                            "Hanken Grotesk"
+                        ],
+                        "display-lg-mobile": [
+                            "Hanken Grotesk"
+                        ],
+                        "body-md": [
+                            "Inter"
+                        ]
+                    },
+                    "fontSize": {
+                        "label-caps": [
+                            "12px",
+                            {
+                                "lineHeight": "1.0",
+                                "letterSpacing": "0.1em",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "headline-md": [
+                            "32px",
+                            {
+                                "lineHeight": "1.2",
+                                "fontWeight": "500"
+                            }
+                        ],
+                        "code-sm": [
+                            "13px",
+                            {
+                                "lineHeight": "1.5",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "display-lg": [
+                            "72px",
+                            {
+                                "lineHeight": "1.1",
+                                "letterSpacing": "-0.04em",
+                                "fontWeight": "700"
+                            }
+                        ],
+                        "display-lg-mobile": [
+                            "40px",
+                            {
+                                "lineHeight": "1.1",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                            }
+                        ],
+                        "body-md": [
+                            "16px",
+                            {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                            }
+                        ]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Skeletal Grid Styles */
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        
+        .skeletal-border {
+            border: 1px solid theme('colors.outline-variant');
+        }
+        
+        .skeletal-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: theme('spacing.gutter');
+        }
+        
+        @media (min-width: 768px) {
+            .skeletal-grid {
+                grid-template-columns: repeat(12, minmax(0, 1fr));
+            }
+        }
+        
+        /* Interactive Card Hover */
+        .interactive-card {
+            transition: border-color 0.3s ease;
+        }
+        
+        .interactive-card:hover {
+            border-color: theme('colors.primary-container');
+        }
+        
+        .interactive-card:hover h3 {
+            transform: translateX(4px);
+            color: theme('colors.primary-fixed-dim');
+        }
+        
+        .interactive-card h3 {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        /* Scanning Animation */
+        .scan-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: theme('colors.primary-fixed-dim');
+            opacity: 0.5;
+            animation: scan 4s linear infinite;
+        }
+        
+        @keyframes scan {
+            0% { top: -10%; }
+            100% { top: 110%; }
+        }
+
+        /* Section Transition Padding */
+        .section-transition {
+            padding-top: 128px;
+            padding-bottom: 128px;
+        }
+        
+        /* Bright Mode Overlay for 'The Interface' */
+        .interface-section {
+            background-color: theme('colors.surface-bright');
+            color: theme('colors.on-surface');
+            position: relative;
+        }
+        
+        .interface-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: theme('colors.outline');
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col md:flex-row">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col h-screen fixed left-0 top-0 pt-20 pb-8 px-4 w-64 bg-surface-container-lowest border-r border-outline-variant/30 z-40">
+<div class="mb-12 px-4">
+<h1 class="text-headline-md font-headline-md text-on-surface">AI Architect</h1>
+<p class="text-body-md font-body-md text-on-surface-variant mt-2">Management &amp; Synthesis</p>
+</div>
+<ul class="flex flex-col gap-2 flex-grow">
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded text-on-surface-variant hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-outline">home</span>
+<span class="text-label-caps font-label-caps">Home</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded text-on-surface-variant hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-outline">science</span>
+<span class="text-label-caps font-label-caps">Research</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded bg-primary-container text-on-primary-container border-l-4 border-primary-fixed-dim shadow-inner" href="#">
+<span class="material-symbols-outlined text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">school</span>
+<span class="text-label-caps font-label-caps font-bold">Education</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded text-on-surface-variant hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-outline">description</span>
+<span class="text-label-caps font-label-caps">Resume</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- TopNavBar (Mobile) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:hidden h-16 bg-background/90 backdrop-blur-md border-b border-outline-variant/30">
+<div class="text-label-caps font-label-caps font-bold tracking-widest text-primary-fixed-dim uppercase">INTELLECT_KINETIC</div>
+<div class="flex gap-4">
+<button aria-label="Toggle Dark Mode" class="text-primary-fixed-dim hover:text-primary-fixed-dim transition-colors duration-300">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<button aria-label="Open Terminal" class="text-primary-fixed-dim hover:text-primary-fixed-dim transition-colors duration-300">
+<span class="material-symbols-outlined">terminal</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full md:pl-64 pt-16 md:pt-0">
+<!-- Hero Section: The Engine (Dark, Technical) -->
+<section class="relative min-h-[614px] flex flex-col justify-center px-margin-mobile md:px-margin-desktop py-24 border-b border-outline-variant/30 overflow-hidden">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<!-- Decorative grid background representing structure -->
+<div class="w-full h-full bg-[linear-gradient(to_right,#3b494b_1px,transparent_1px),linear-gradient(to_bottom,#3b494b_1px,transparent_1px)] bg-[size:48px_48px]"></div>
+</div>
+<div class="z-10 max-w-4xl scan-container p-8 skeletal-border bg-surface-container-low/60 backdrop-blur-sm">
+<div class="scan-line"></div>
+<div class="flex items-center gap-2 mb-6">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="text-code-sm font-code-sm text-primary-fixed-dim tracking-widest uppercase">System Initialization: Education Module</span>
+</div>
+<h1 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-on-surface mb-6">
+                    Tzu Chi University
+                </h1>
+<p class="text-headline-md font-headline-md text-on-surface-variant max-w-2xl mb-8">
+                    International Service Industry Management. A structural approach to leadership, ethics, and operational synthesis.
+                </p>
+<div class="flex flex-wrap gap-4">
+<div class="px-4 py-2 skeletal-border bg-transparent text-code-sm font-code-sm text-on-surface-variant flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed-dim"></span>
+                        Management
+                    </div>
+<div class="px-4 py-2 skeletal-border bg-transparent text-code-sm font-code-sm text-on-surface-variant flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed-dim"></span>
+                        Strategy
+                    </div>
+<div class="px-4 py-2 skeletal-border bg-transparent text-code-sm font-code-sm text-on-surface-variant flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed-dim"></span>
+                        Global Focus
+                    </div>
+</div>
+</div>
+</section>
+<!-- Thematic Shift: The Interface (Bright, Structural) -->
+<section class="interface-section section-transition px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto">
+<div class="mb-16 flex items-baseline justify-between border-b border-outline pb-4">
+<h2 class="text-headline-md font-headline-md text-on-surface">Core Competencies</h2>
+<span class="text-code-sm font-code-sm text-on-surface-variant uppercase tracking-widest">Synthesis Phase</span>
+</div>
+<!-- Bento Grid Layout -->
+<div class="skeletal-grid">
+<!-- Academic Focus (Spans 8 cols on desktop) -->
+<div class="col-span-4 md:col-span-8 skeletal-border p-8 interactive-card bg-surface">
+<div class="flex items-start justify-between mb-8">
+<span class="material-symbols-outlined text-4xl text-primary-fixed-dim">menu_book</span>
+<span class="text-label-caps font-label-caps text-outline-variant">01</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface mb-4">Academic Focus</h3>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-xl">
+                            Rigorous coursework centered on international business operations, ethical leadership, and cross-cultural communication. Establishing a theoretical framework for high-level management and service execution.
+                        </p>
+<div class="mt-8 border-t border-outline-variant/50 pt-4">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<h4 class="text-code-sm font-code-sm text-on-surface mb-1">Key Area</h4>
+<p class="text-body-md font-body-md text-on-surface-variant">Strategic Planning</p>
+</div>
+<div>
+<h4 class="text-code-sm font-code-sm text-on-surface mb-1">Key Area</h4>
+<p class="text-body-md font-body-md text-on-surface-variant">Operational Ethics</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Service Excellence (Spans 4 cols on desktop) -->
+<div class="col-span-4 md:col-span-4 skeletal-border p-8 interactive-card bg-surface flex flex-col">
+<div class="flex items-start justify-between mb-8">
+<span class="material-symbols-outlined text-4xl text-primary-fixed-dim">diversity_3</span>
+<span class="text-label-caps font-label-caps text-outline-variant">02</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface mb-4">Service Excellence</h3>
+<p class="text-body-md font-body-md text-on-surface-variant flex-grow">
+                            Cultivating a deep understanding of customer-centric design and quality assurance in global service industries.
+                        </p>
+<button class="mt-6 w-full py-3 skeletal-border text-label-caps font-label-caps hover:bg-primary-container hover:text-on-primary-fixed transition-colors duration-300">
+                            VIEW METHODOLOGY
+                        </button>
+</div>
+<!-- Global Perspective (Full width) -->
+<div class="col-span-4 md:col-span-12 skeletal-border p-0 mt-8 flex flex-col md:flex-row overflow-hidden interactive-card bg-surface">
+<div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center border-b md:border-b-0 md:border-r border-outline-variant/50">
+<div class="flex items-start justify-between mb-6">
+<span class="material-symbols-outlined text-4xl text-primary-fixed-dim">public</span>
+<span class="text-label-caps font-label-caps text-outline-variant">03</span>
+</div>
+<h3 class="text-headline-md font-headline-md text-on-surface mb-4">Global Perspective</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6">
+                                Analyzing international market trends and developing strategies for cross-border service deployment. Preparing for dynamic, multicultural operational environments.
+                            </p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-body-md font-body-md text-on-surface">
+<span class="material-symbols-outlined text-primary-fixed-dim text-sm">check_box</span>
+                                    Cross-Cultural Management
+                                </li>
+<li class="flex items-center gap-3 text-body-md font-body-md text-on-surface">
+<span class="material-symbols-outlined text-primary-fixed-dim text-sm">check_box</span>
+                                    International Market Analysis
+                                </li>
+</ul>
+</div>
+<div class="w-full md:w-1/2 min-h-[300px] relative bg-surface-container-lowest">
+<!-- Abstract imagery representing global connection -->
+<img class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-luminosity" data-alt="A sophisticated, minimalist 3D rendering of a stylized globe composed of glowing cyan data nodes and sharp, thin connecting lines over a pristine white background. High-key lighting emphasizes a clean, modern corporate aesthetic. The overall mood is intelligent, global, and highly structured, fitting a premium management interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqu48ffgSaXCuz9_T0uLI0jayrKqqmQxZIc8JZ4d1gtVcnTwm-9Kwc_pUAQsj81vm5wGScJ9Rju7i7rS84BUptOrmOhsDZ6-jaguMhsw5pObmkLNQjabd4EMQOVj395mGHsef_AR59aTvYS0utgZNANtjVQkQ9TnbypMkWgzSYMbaChmmhXOX3rrIiuQLWZ5ReqsQcPJKxYTrPyiDT2611jmUIWvk2qKGoL_C8HBiLWqUcwhZK56MY"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-12 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter bg-background border-t border-outline-variant/30">
+<div class="text-label-caps font-label-caps text-on-surface uppercase">
+                © 2024 INTELLECT_KINETIC. SYSTEM_STATUS: OPERATIONAL
+            </div>
+<ul class="flex gap-6">
+<li>
+<a class="text-code-sm font-code-sm text-outline hover:text-primary-fixed-dim hover:underline underline-offset-4 transition-all duration-300" href="#">
+                        GitHub
+                    </a>
+</li>
+<li>
+<a class="text-code-sm font-code-sm text-outline hover:text-primary-fixed-dim hover:underline underline-offset-4 transition-all duration-300" href="#">
+                        LinkedIn
+                    </a>
+</li>
+<li>
+<a class="text-code-sm font-code-sm text-outline hover:text-primary-fixed-dim hover:underline underline-offset-4 transition-all duration-300" href="#">
+                        ResearchGate
+                    </a>
+</li>
+<li>
+<a class="text-code-sm font-code-sm text-outline hover:text-primary-fixed-dim hover:underline underline-offset-4 transition-all duration-300" href="#">
+                        Twitter
+                    </a>
+</li>
+</ul>
+</footer>
+</main>
+</body></html>
+
+<!-- Education & Management -->
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact &amp; Resume - INTELLECT_KINETIC</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&amp;family=Hanken+Grotesk:wght@500;700&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#121414",
+                        "tertiary-fixed": "#e2e2e7",
+                        "inverse-primary": "#006970",
+                        "primary-fixed-dim": "#00dbe9",
+                        "surface-tint": "#00dbe9",
+                        "outline": "#849495",
+                        "on-primary-container": "#006970",
+                        "on-primary-fixed-variant": "#004f54",
+                        "surface-bright": "#383939",
+                        "on-surface": "#e3e2e2",
+                        "on-primary": "#00363a",
+                        "on-secondary-fixed-variant": "#474746",
+                        "error-container": "#93000a",
+                        "surface-container": "#1f2020",
+                        "surface-container-high": "#292a2a",
+                        "primary-container": "#00f0ff",
+                        "on-secondary-container": "#b7b5b4",
+                        "secondary-fixed": "#e5e2e1",
+                        "surface-variant": "#343535",
+                        "surface-container-lowest": "#0d0e0f",
+                        "surface-container-low": "#1b1c1c",
+                        "primary-fixed": "#7df4ff",
+                        "on-tertiary-container": "#5d5f63",
+                        "secondary-container": "#474746",
+                        "surface-dim": "#121414",
+                        "inverse-on-surface": "#303031",
+                        "secondary": "#c8c6c5",
+                        "tertiary-container": "#d9d9de",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "tertiary": "#f5f5fa",
+                        "on-tertiary-fixed": "#1a1c1f",
+                        "surface-container-highest": "#343535",
+                        "primary": "#dbfcff",
+                        "on-tertiary-fixed-variant": "#45474b",
+                        "error": "#ffb4ab",
+                        "on-background": "#e3e2e2",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "on-primary-fixed": "#002022",
+                        "surface": "#121414",
+                        "on-tertiary": "#2e3034",
+                        "on-secondary": "#313030",
+                        "inverse-surface": "#e3e2e2",
+                        "on-surface-variant": "#b9cacb",
+                        "outline-variant": "#3b494b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "unit": "4px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "code-sm": ["JetBrains Mono"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "code-sm": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display-lg": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Minimalist skeletal inputs */
+        .skeletal-input {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #333;
+            color: #e3e2e2;
+            padding: 8px 0;
+            outline: none;
+            transition: border-bottom-color 0.3s, border-bottom-width 0.3s;
+        }
+        .skeletal-input:focus {
+            border-bottom: 2px solid #00dbe9; /* primary-fixed-dim */
+            box-shadow: 0 1px 0 0 #00dbe9;
+        }
+        
+        /* Skeletal button */
+        .btn-skeletal {
+            border: 1px solid #333;
+            background: transparent;
+            color: #e3e2e2;
+            transition: all 0.3s ease;
+        }
+        .btn-skeletal:hover {
+            background: #00f0ff; /* primary-container */
+            color: #121414; /* background */
+            border-color: #00f0ff;
+        }
+
+        /* Scanning animation line */
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: rgba(0, 219, 233, 0.5);
+            animation: scan 3s linear infinite;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col md:flex-row">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col h-screen fixed left-0 top-0 pt-20 pb-8 px-4 w-64 bg-surface-container-lowest border-r border-outline-variant/30 z-40">
+<div class="mb-12">
+<h1 class="text-headline-md font-headline-md text-on-surface mb-2">AI Architect</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Management &amp; Synthesis</p>
+</div>
+<ul class="flex flex-col space-y-2 flex-grow">
+<li>
+<a class="flex items-center p-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-variant hover:translate-x-1 transition-transform duration-200 text-label-caps font-label-caps" href="#">
+<span class="material-symbols-outlined mr-3">home</span>
+                    Home
+                </a>
+</li>
+<li>
+<a class="flex items-center p-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-variant hover:translate-x-1 transition-transform duration-200 text-label-caps font-label-caps" href="#">
+<span class="material-symbols-outlined mr-3">science</span>
+                    Research
+                </a>
+</li>
+<li>
+<a class="flex items-center p-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-variant hover:translate-x-1 transition-transform duration-200 text-label-caps font-label-caps" href="#">
+<span class="material-symbols-outlined mr-3">school</span>
+                    Education
+                </a>
+</li>
+<li>
+<a class="flex items-center p-3 rounded-DEFAULT bg-primary-container text-on-primary-container border-l-4 border-primary-fixed-dim text-label-caps font-label-caps shadow-inner" href="#" style="box-shadow: inset 0 0 10px rgba(0,219,233,0.1);">
+<span class="material-symbols-outlined mr-3">description</span>
+                    Resume
+                </a>
+</li>
+</ul>
+</nav>
+<!-- TopNavBar (Mobile) -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-background/90 backdrop-blur-md border-b border-outline-variant/30 md:hidden">
+<div class="text-label-caps font-label-caps font-bold tracking-widest text-primary-fixed-dim">
+            INTELLECT_KINETIC
+        </div>
+<div class="flex items-center space-x-4">
+<button class="text-primary-fixed-dim hover:scale-95 transition-transform"><span class="material-symbols-outlined">dark_mode</span></button>
+<button class="text-primary-fixed-dim hover:scale-95 transition-transform"><span class="material-symbols-outlined">terminal</span></button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 ml-0 md:ml-64 pt-20 md:pt-16 px-margin-mobile md:px-margin-desktop pb-margin-desktop min-h-screen grid grid-cols-4 md:grid-cols-12 gap-gutter">
+<!-- Header Section -->
+<header class="col-span-4 md:col-span-12 mb-16 pt-8">
+<h1 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg mb-4 text-on-surface">System.Connect()</h1>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-2xl">
+                Initiate a secure connection for collaboration, speaking engagements, or technical inquiries. 
+                Data packets transmitted via the interface below are prioritized.
+            </p>
+</header>
+<!-- Bento Grid Layout -->
+<div class="col-span-4 md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Contact Form (The Interface) -->
+<section class="col-span-1 md:col-span-7 bg-surface-container border border-outline-variant/30 p-8 rounded-DEFAULT relative overflow-hidden group hover:border-primary-fixed-dim/50 transition-colors">
+<div class="scan-line hidden group-hover:block"></div>
+<h2 class="text-headline-md font-headline-md text-on-surface mb-8 border-b border-outline-variant/30 pb-4 flex justify-between items-center">
+                    Direct Channel
+                    <span class="material-symbols-outlined text-primary-fixed-dim">mail</span>
+</h2>
+<form class="space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col">
+<label class="text-label-caps font-label-caps text-on-surface-variant mb-2">Identifier // Name</label>
+<input class="skeletal-input text-body-md font-body-md" placeholder="Enter string..." type="text"/>
+</div>
+<div class="flex flex-col">
+<label class="text-label-caps font-label-caps text-on-surface-variant mb-2">Return Address // Email</label>
+<input class="skeletal-input text-body-md font-body-md" placeholder="Enter valid syntax..." type="email"/>
+</div>
+</div>
+<div class="flex flex-col">
+<label class="text-label-caps font-label-caps text-on-surface-variant mb-2">Subject // Topic</label>
+<input class="skeletal-input text-body-md font-body-md" placeholder="Transmission intent..." type="text"/>
+</div>
+<div class="flex flex-col">
+<label class="text-label-caps font-label-caps text-on-surface-variant mb-2">Payload // Message</label>
+<textarea class="skeletal-input text-body-md font-body-md resize-none h-32" placeholder="Construct data packet here..."></textarea>
+</div>
+<div class="flex justify-end pt-4">
+<button class="btn-skeletal px-8 py-3 text-label-caps font-label-caps flex items-center space-x-2" type="button">
+<span>Execute Transmission</span>
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+</div>
+</form>
+</section>
+<!-- Resume & Links (The Engine) -->
+<section class="col-span-1 md:col-span-5 flex flex-col gap-gutter">
+<!-- Resume Download Card -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 p-8 rounded-DEFAULT group hover:border-primary-fixed-dim/50 transition-colors flex flex-col justify-between h-full">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface mb-2">Curriculum Vitae</h2>
+<p class="text-code-sm font-code-sm text-on-surface-variant mb-8 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-fixed-dim"></span>
+                            Version: 2024.1_Stable
+                        </p>
+</div>
+<div class="space-y-4">
+<div class="border border-outline-variant/30 p-4 flex justify-between items-center bg-surface-container-low">
+<span class="text-label-caps font-label-caps">Full_Profile.pdf</span>
+<span class="text-code-sm font-code-sm text-on-surface-variant">2.4 MB</span>
+</div>
+<button class="btn-skeletal w-full py-4 text-label-caps font-label-caps flex items-center justify-center space-x-2">
+<span class="material-symbols-outlined">download</span>
+<span>Download Payload</span>
+</button>
+</div>
+</div>
+<!-- Network Links -->
+<div class="grid grid-cols-2 gap-gutter">
+<a class="bg-surface-container border border-outline-variant/30 p-6 rounded-DEFAULT group hover:border-primary-fixed-dim transition-colors flex flex-col items-center justify-center text-center" href="#">
+<span class="material-symbols-outlined text-3xl mb-3 text-on-surface-variant group-hover:text-primary-fixed-dim">code</span>
+<span class="text-label-caps font-label-caps group-hover:translate-x-1 transition-transform">GitHub</span>
+</a>
+<a class="bg-surface-container border border-outline-variant/30 p-6 rounded-DEFAULT group hover:border-primary-fixed-dim transition-colors flex flex-col items-center justify-center text-center" href="#">
+<span class="material-symbols-outlined text-3xl mb-3 text-on-surface-variant group-hover:text-primary-fixed-dim">hub</span>
+<span class="text-label-caps font-label-caps group-hover:translate-x-1 transition-transform">LinkedIn</span>
+</a>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter bg-background border-t border-outline-variant/30 ml-0 md:ml-64 mt-auto">
+<div class="text-label-caps font-label-caps text-on-surface">
+            INTELLECT_KINETIC
+        </div>
+<div class="text-code-sm font-code-sm text-outline">
+            © 2024 INTELLECT_KINETIC. SYSTEM_STATUS: OPERATIONAL
+        </div>
+<div class="flex space-x-6">
+<a class="text-code-sm font-code-sm text-outline hover:text-primary-fixed-dim hover:underline underline-offset-4 transition-colors" href="#">GitHub</a>
+<a class="text-code-sm font-code-sm text-outline hover:text-primary-fixed-dim hover:underline underline-offset-4 transition-colors" href="#">LinkedIn</a>
+<a class="text-code-sm font-code-sm text-outline hover:text-primary-fixed-dim hover:underline underline-offset-4 transition-colors" href="#">ResearchGate</a>
+<a class="text-code-sm font-code-sm text-outline hover:text-primary-fixed-dim hover:underline underline-offset-4 transition-colors" href="#">Twitter</a>
+</div>
+</footer>
+</body></html>
