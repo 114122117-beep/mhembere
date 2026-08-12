@@ -55,10 +55,11 @@
       </button>
     </div>
     <nav class="space-y-4">
-      <a href="#home" class="block rounded-2xl border border-outline-variant/20 bg-surface-container-low px-5 py-4 font-label-caps text-label-caps text-on-surface-variant hover:border-primary-container hover:text-primary-fixed-dim transition">Home</a>
-      <a href="#research" class="block rounded-2xl border border-outline-variant/20 bg-surface-container-low px-5 py-4 font-label-caps text-label-caps text-on-surface-variant hover:border-primary-container hover:text-primary-fixed-dim transition">Research</a>
-      <a href="#education" class="block rounded-2xl border border-outline-variant/20 bg-surface-container-low px-5 py-4 font-label-caps text-label-caps text-on-surface-variant hover:border-primary-container hover:text-primary-fixed-dim transition">Education</a>
-      <a href="#resume" class="block rounded-2xl border border-outline-variant/20 bg-surface-container-low px-5 py-4 font-label-caps text-label-caps text-on-surface-variant hover:border-primary-container hover:text-primary-fixed-dim transition">Resume</a>
+      <a href="#home" data-section="home" class="block rounded-2xl border border-outline-variant/20 bg-surface-container-low px-5 py-4 font-label-caps text-label-caps text-on-surface-variant hover:border-primary-container hover:text-primary-fixed-dim transition">Home</a>
+      <a href="#research" data-section="research" class="block rounded-2xl border border-outline-variant/20 bg-surface-container-low px-5 py-4 font-label-caps text-label-caps text-on-surface-variant hover:border-primary-container hover:text-primary-fixed-dim transition">Research</a>
+      <a href="#education" data-section="education" class="block rounded-2xl border border-outline-variant/20 bg-surface-container-low px-5 py-4 font-label-caps text-label-caps text-on-surface-variant hover:border-primary-container hover:text-primary-fixed-dim transition">Education</a>
+      <a href="#resume" data-section="resume" class="block rounded-2xl border border-outline-variant/20 bg-surface-container-low px-5 py-4 font-label-caps text-label-caps text-on-surface-variant hover:border-primary-container hover:text-primary-fixed-dim transition">Resume</a>
+      <a href="#contact" data-section="contact" class="block rounded-2xl border border-outline-variant/20 bg-surface-container-low px-5 py-4 font-label-caps text-label-caps text-on-surface-variant hover:border-primary-container hover:text-primary-fixed-dim transition">Contact</a>
     </nav>
   </div>
   <nav class="hidden md:flex fixed left-0 top-0 z-40 h-screen w-64 flex-col justify-between border-r border-outline-variant/30 bg-surface-container-lowest px-6 py-8">
@@ -72,21 +73,25 @@
         </div>
       </div>
       <div class="space-y-2">
-        <a href="#home" class="flex items-center gap-3 rounded-xl px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-primary-fixed-dim transition">
+        <a href="#home" data-section="home" class="flex items-center gap-3 rounded-xl px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-primary-fixed-dim transition">
           <span class="material-symbols-outlined">home</span>
           <span class="font-label-caps text-label-caps">Home</span>
         </a>
-        <a href="#research" class="flex items-center gap-3 rounded-xl px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-primary-fixed-dim transition">
+        <a href="#research" data-section="research" class="flex items-center gap-3 rounded-xl px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-primary-fixed-dim transition">
           <span class="material-symbols-outlined">science</span>
           <span class="font-label-caps text-label-caps">Research</span>
         </a>
-        <a href="#education" class="flex items-center gap-3 rounded-xl px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-primary-fixed-dim transition">
+        <a href="#education" data-section="education" class="flex items-center gap-3 rounded-xl px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-primary-fixed-dim transition">
           <span class="material-symbols-outlined">school</span>
           <span class="font-label-caps text-label-caps">Education</span>
         </a>
-        <a href="#resume" class="flex items-center gap-3 rounded-xl px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-primary-fixed-dim transition">
+        <a href="#resume" data-section="resume" class="flex items-center gap-3 rounded-xl px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-primary-fixed-dim transition">
           <span class="material-symbols-outlined">description</span>
           <span class="font-label-caps text-label-caps">Resume</span>
+        </a>
+        <a href="#contact" data-section="contact" class="flex items-center gap-3 rounded-xl px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-primary-fixed-dim transition">
+          <span class="material-symbols-outlined">mail</span>
+          <span class="font-label-caps text-label-caps">Contact</span>
         </a>
       </div>
     </div>
@@ -122,7 +127,7 @@
         </div>
       </div>
     </section>
-    <section id="research" class="bg-background px-margin-mobile py-24 md:px-margin-desktop">
+    <section id="research" class="hidden bg-background px-margin-mobile py-24 md:px-margin-desktop">
       <div class="mx-auto max-w-6xl rounded-[28px] border border-outline-variant/30 bg-surface-container-low p-8 md:p-12">
         <div class="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
@@ -151,7 +156,7 @@
         </div>
       </div>
     </section>
-    <section id="education" class="interface-section section-transition px-margin-mobile py-24 md:px-margin-desktop">
+    <section id="education" class="hidden interface-section section-transition px-margin-mobile py-24 md:px-margin-desktop">
       <div class="mx-auto max-w-6xl">
         <div class="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
@@ -210,7 +215,7 @@
       </div>
     </div>
   </section>
-  <section id="resume" class="bg-[#2a0d4d] px-margin-mobile py-24 md:px-margin-desktop">
+  <section id="resume" class="hidden bg-[#2a0d4d] px-margin-mobile py-24 md:px-margin-desktop">
     <div class="mx-auto max-w-6xl rounded-[32px] border border-transparent bg-[#250a3f] p-8 md:p-12 text-white">
       <div class="grid gap-8 lg:grid-cols-2">
         <div>

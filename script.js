@@ -123,6 +123,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  const sectionLinks = document.querySelectorAll('[data-section]');
+  const sections = document.querySelectorAll('main section[id]');
+
+  const showSection = (sectionId) => {
+    sections.forEach((section) => {
+      section.classList.toggle('hidden', section.id !== sectionId);
+    });
+    const target = document.getElementById(sectionId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  sectionLinks.forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const sectionId = link.getAttribute('data-section');
+      if (sectionId) {
+        showSection(sectionId);
+      }
+      if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        setMobileMenuOpen(false);
+      }
+    });
+  });
+
   const interfaceSection = document.getElementById('education');
   if (interfaceSection) {
     const observer = new IntersectionObserver(
