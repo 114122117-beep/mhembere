@@ -27,11 +27,29 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: "Inter", sans-serif;
-  background:
-    radial-gradient(circle at top left, rgba(255, 139, 42, 0.18), transparent 18%),
-    radial-gradient(circle at bottom right, rgba(93, 124, 255, 0.18), transparent 28%),
-    var(--bg);
   color: var(--text);
+  background:
+    linear-gradient(180deg, rgba(4, 16, 35, 0.78), rgba(4, 16, 35, 0.88)),
+    radial-gradient(circle at 20% 10%, rgba(73, 157, 255, 0.24), transparent 28%),
+    radial-gradient(circle at 80% 20%, rgba(60, 211, 255, 0.18), transparent 26%),
+    linear-gradient(135deg, #031a2d 0%, #062f52 34%, #0d2d5d 65%, #091d35 100%);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 35%, rgba(255,255,255,0.12) 0 2px, transparent 2px 100%),
+    radial-gradient(circle at 30% 18%, rgba(255,255,255,0.12) 0 2px, transparent 2px 100%),
+    radial-gradient(circle at 70% 18%, rgba(255,255,255,0.12) 0 2px, transparent 2px 100%),
+    radial-gradient(circle at 82% 38%, rgba(255,255,255,0.12) 0 2px, transparent 2px 100%),
+    linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+  opacity: 0.8;
 }
 
 img {
@@ -64,6 +82,8 @@ a:focus-visible {
   width: min(1200px, calc(100% - 32px));
   margin: 0 auto;
   padding: 24px 0 48px;
+  position: relative;
+  z-index: 1;
 }
 
 .site-header {
