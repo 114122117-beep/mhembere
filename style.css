@@ -1,29 +1,107 @@
-﻿.skeleton-border {
-    border: 1px solid var(--tw-colors-surface-variant);
+﻿body {
+  min-height: 100vh;
+  background-color: #0b162c;
+  background-image: url('1968.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #ffffff;
 }
 
-.skeleton-hover:hover {
-    border-color: var(--tw-colors-primary-container);
+html {
+  scroll-behavior: smooth;
+}
+
+button,
+a {
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 3px;
+}
+
+button:hover,
+a:hover {
+  filter: brightness(0.95);
+}
+
+#mobile-menu {
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+#mobile-menu.hidden {
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+}
+
+#mobile-menu:not(.hidden) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.interface-section {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(11, 22, 44, 0.92);
+  color: #ffffff;
+}
+
+.interface-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: none;
+  pointer-events: none;
 }
 
 .scan-line {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: var(--tw-colors-primary-fixed-dim);
-    opacity: 0.5;
-    animation: scan 4s linear infinite;
+  position: absolute;
+  inset-inline: 0;
+  height: 1px;
+  background: rgba(0, 82, 204, 0.2);
+  opacity: 0.75;
+  animation: scan 4s linear infinite;
 }
 
 @keyframes scan {
-    0% { top: 0%; opacity: 0; }
-    10% { opacity: 0.5; }
-    90% { opacity: 0.5; }
-    100% { top: 100%; opacity: 0; }
+  0% { top: -8%; opacity: 0; }
+  50% { opacity: 0.75; }
+  100% { top: 108%; opacity: 0; }
 }
 
-.transition-theme {
-    transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
+@media (max-width: 767px) {
+  .desktop-only { display: none !important; }
+}
+
+@media (min-width: 768px) {
+  .mobile-only { display: none !important; }
+}
+
+#research {
+  position: relative;
+  background-color: rgba(11, 22, 44, 0.85);
+  background-image: none;
+  overflow: hidden;
+}
+
+#research .bg-surface-container-low {
+  background-color: rgba(11, 22, 44, 0.95);
+}
+
+#research::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#research > div {
+  position: relative;
+  z-index: 1;
 }
