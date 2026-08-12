@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Private Assignment Studio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="login-screen" class="screen active">
+      <div class="login-card">
+        <div class="brand-block">
+          <span class="badge">PRIVATE WORKSPACE</span>
+          <h1>Assignment Writing Studio</h1>
+          <p>Secure access for AI writing and translation workflows.</p>
+        </div>
+
+        <form id="login-form" class="login-form">
+          <label>
+            <span>Username</span>
+            <input id="username" type="text" value="ashley" autocomplete="username" />
+          </label>
+
+          <label>
+            <span>Password</span>
+            <input id="password" type="password" placeholder="Enter your password" autocomplete="current-password" />
+          </label>
+
+          <button type="submit">Enter Workspace</button>
+          <p id="login-error" class="error-message" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <div id="app-screen" class="screen">
+      <header class="topbar">
+        <div>
+          <span class="badge success">SECURED</span>
+          <h2>Private Assignment & Translation Workspace</h2>
+        </div>
+        <button id="logout-btn" class="ghost-btn">Log out</button>
+      </header>
+
+      <main class="workspace-layout">
+        <section class="panel left-panel">
+          <h3>1. Project details</h3>
+
+          <label>
+            <span>Project title</span>
+            <input id="project-title" type="text" placeholder="Example: AI in Education" />
+          </label>
+
+          <label>
+            <span>Course / subject</span>
+            <input id="subject" type="text" placeholder="Example: Business Management" />
+          </label>
+
+          <label>
+            <span>Assignment brief</span>
+            <textarea id="brief" rows="5" placeholder="Describe what the assignment should cover..."></textarea>
+          </label>
+
+          <label>
+            <span>Source information</span>
+            <textarea id="source-info" rows="6" placeholder="Paste your notes, lecture points, PPT summary, or key content here..."></textarea>
+          </label>
+
+          <label>
+            <span>Upload slide notes or document</span>
+            <input id="file-upload" type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.txt" />
+          </label>
+
+          <div class="inline-fields">
+            <label>
+              <span>Target language</span>
+              <select id="target-language">
+                <option value="English">English</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Japanese">Japanese</option>
+                <option value="French">French</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Swahili">Swahili</option>
+                <option value="Arabic">Arabic</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Style</span>
+              <select id="tone">
+                <option value="Academic">Academic</option>
+                <option value="Professional">Professional</option>
+                <option value="Simple and clear">Simple and clear</option>
+                <option value="Executive">Executive</option>
+              </select>
+            </label>
+          </div>
+
+          <button id="generate-btn" class="primary-btn" type="button">Generate PPT draft</button>
+        </section>
+
+        <section class="panel right-panel">
+          <h3>2. AI-generated output</h3>
+
+          <div class="output-box">
+            <h4>Assignment summary</h4>
+            <div id="assignment-output" class="output-content">
+              Your generated assignment content will appear here.
+            </div>
+          </div>
+
+          <div class="translation-box">
+            <h4>Translation preview</h4>
+            <textarea id="translation-output" rows="8" placeholder="Translated content appears here..."></textarea>
+          </div>
+
+          <button id="translate-btn" class="secondary-btn" type="button">Translate to selected language</button>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,256 +1,326 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to Ashley Mhembere AI AUTOMATIONAMION</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background-color: #0b162c;
-      color: #ffffff;
-      font-family: Inter, sans-serif;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    #mobile-menu {
-      transition: transform 0.25s ease, opacity 0.25s ease;
-    }
-    #mobile-menu.hidden {
-      opacity: 0;
-      transform: translateY(-12px);
-      pointer-events: none;
-    }
-  </style>
-  <script src="script.js"></script>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-</head>
-<body class="bg-background text-on-surface font-body-md text-body-md min-h-screen antialiased">
-  <div class="md:hidden fixed inset-x-0 top-0 z-50 bg-background/95 backdrop-blur border-b border-outline-variant/30">
-    <div class="mx-margin-mobile flex h-16 items-center justify-between">
-      <a href="#home" class="text-label-caps font-label-caps uppercase tracking-[0.28em] text-primary-fixed-dim">WELCOME TO ASHLEY MHEMBERE</a>
-      <button id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu" class="inline-flex items-center justify-center rounded-md border border-outline-variant/40 p-2 text-primary-fixed-dim hover:bg-surface-container-low transition">
-        <span class="material-symbols-outlined">menu</span>
-      </button>
-    </div>
-  </div>
-  <div id="mobile-menu" class="hidden fixed inset-0 z-50 overflow-y-auto bg-background/95 p-6 pt-24 backdrop-blur-lg">
-    <div class="mb-8 flex items-center justify-between">
-      <div class="flex items-center gap-4">
-        <img src="back.jpg.jpeg" alt="Profile photo" class="h-14 w-14 rounded-full border border-outline-variant/20 object-cover" />
-        <div>
-          <a href="#home" class="text-xl font-headline-md text-on-surface">Menu</a>
-          <p class="text-code-sm font-code-sm text-on-surface-variant">@1645kithy</p>
-        </div>
-      </div>
-      <button id="mobile-menu-close" class="inline-flex items-center justify-center rounded-md border border-outline-variant/40 p-2 text-primary-fixed-dim hover:bg-surface-container-low transition">
-        <span class="material-symbols-outlined">close</span>
-      </button>
-    </div>
-    <nav class="space-y-4">
-      <a href="#home" data-section="home" class="block rounded-2xl border border-outline-variant/20 bg-surface-container-low px-5 py-4 font-label-caps text-label-caps text-on-surface-variant hover:border-primary-container hover:text-primary-fixed-dim transition">Home</a>
-      <a href="#research" data-section="research" class="block rounded-2xl border border-outline-variant/20 bg-surface-container-low px-5 py-4 font-label-caps text-label-caps text-on-surface-variant hover:border-primary-container hover:text-primary-fixed-dim transition">Research</a>
-      <a href="#education" data-section="education" class="block rounded-2xl border border-outline-variant/20 bg-surface-container-low px-5 py-4 font-label-caps text-label-caps text-on-surface-variant hover:border-primary-container hover:text-primary-fixed-dim transition">Education</a>
-      <a href="#resume" data-section="resume" class="block rounded-2xl border border-outline-variant/20 bg-surface-container-low px-5 py-4 font-label-caps text-label-caps text-on-surface-variant hover:border-primary-container hover:text-primary-fixed-dim transition">Resume</a>
-      <a href="#contact" data-section="contact" class="block rounded-2xl border border-outline-variant/20 bg-surface-container-low px-5 py-4 font-label-caps text-label-caps text-on-surface-variant hover:border-primary-container hover:text-primary-fixed-dim transition">Contact</a>
-    </nav>
-  </div>
-  <nav class="hidden md:flex fixed left-0 top-0 z-40 h-screen w-64 flex-col justify-between border-r border-outline-variant/30 bg-surface-container-lowest px-6 py-8">
-    <div>
-      <div class="mb-8 flex items-center gap-4">
-        <img src="back.jpg.jpeg" alt="Profile photo" class="h-16 w-16 rounded-full border border-outline-variant/20 object-cover" />
-        <div>
-          <div class="text-label-caps font-label-caps tracking-[0.28em] text-primary-fixed-dim">WELCOME TO ASHLEY MHEMBERE</div>
-          <h1 class="mt-4 text-headline-md font-headline-md text-on-surface">AI AUTOMATIONAMION</h1>
-          <p class="mt-2 text-code-sm font-code-sm text-on-surface-variant">Management &amp; Synthesis</p>
-        </div>
-      </div>
-      <div class="space-y-2">
-        <a href="#home" data-section="home" class="flex items-center gap-3 rounded-xl px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-primary-fixed-dim transition">
-          <span class="material-symbols-outlined">home</span>
-          <span class="font-label-caps text-label-caps">Home</span>
-        </a>
-        <a href="#research" data-section="research" class="flex items-center gap-3 rounded-xl px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-primary-fixed-dim transition">
-          <span class="material-symbols-outlined">science</span>
-          <span class="font-label-caps text-label-caps">Research</span>
-        </a>
-        <a href="#education" data-section="education" class="flex items-center gap-3 rounded-xl px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-primary-fixed-dim transition">
-          <span class="material-symbols-outlined">school</span>
-          <span class="font-label-caps text-label-caps">Education</span>
-        </a>
-        <a href="#resume" data-section="resume" class="flex items-center gap-3 rounded-xl px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-primary-fixed-dim transition">
-          <span class="material-symbols-outlined">description</span>
-          <span class="font-label-caps text-label-caps">Resume</span>
-        </a>
-        <a href="#contact" data-section="contact" class="flex items-center gap-3 rounded-xl px-4 py-3 text-on-surface-variant hover:bg-surface-variant hover:text-primary-fixed-dim transition">
-          <span class="material-symbols-outlined">mail</span>
-          <span class="font-label-caps text-label-caps">Contact</span>
-        </a>
-      </div>
-    </div>
-    <div class="space-y-4 text-on-surface-variant">
-      <button class="flex items-center gap-3 text-primary-fixed-dim">
-        <span class="material-symbols-outlined">dark_mode</span>
-        Dark mode
-      </button>
-      <button class="flex items-center gap-3 text-primary-fixed-dim">
-        <span class="material-symbols-outlined">terminal</span>
-        Terminal
-      </button>
-    </div>
-  </nav>
-  <main class="min-h-screen md:pl-64">
-    <section id="home" class="relative overflow-hidden bg-[#2a0d4d] px-margin-mobile py-28 md:px-margin-desktop md:py-32">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.08),transparent_35%)] pointer-events-none"></div>
-      <div class="relative mx-auto max-w-6xl">
-        <div class="max-w-3xl rounded-[32px] border border-transparent bg-[#250a3f]/95 p-8 shadow-2xl backdrop-blur-lg text-white">
-          <div class="flex flex-col gap-4">
-            <span class="inline-flex items-center gap-2 rounded-full border border-transparent bg-[#3d1b6f] px-3 py-1 text-code-sm font-code-sm text-white">SYSTEM INITIALIZED</span>
-            <h1 class="text-display-lg-mobile md:text-display-lg font-display-lg-mobile md:font-display-lg text-white tracking-tight">Architect of <span class="text-white">Intelligence</span></h1>
-            <p class="max-w-2xl text-body-md font-body-md text-white/80">Bridging rigorous management systems and AI-led operational design. Engineering synthesis through strategy, tactical clarity, and resilient autonomy.</p>
-            <div class="flex flex-wrap gap-3">
-              <span class="rounded-full border border-outline-variant/30 px-4 py-2 text-code-sm font-code-sm text-on-surface-variant">AI Strategy Synthesis</span>
-              <span class="rounded-full border border-outline-variant/30 px-4 py-2 text-code-sm font-code-sm text-on-surface-variant">Autonomous Agents</span>
-              <span class="rounded-full border border-outline-variant/30 px-4 py-2 text-code-sm font-code-sm text-on-surface-variant">Service Leadership</span>
-            </div>
-            <div class="mt-8">
-              <a href="#research" class="inline-flex items-center justify-center rounded-full border border-primary-fixed-dim bg-primary-container px-8 py-3 text-label-caps font-label-caps text-on-primary-container transition hover:bg-primary-fixed duration-200">Explore Research</a>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fast Zim | Food, Shopping & Ride-Hailing in Zimbabwe</title>
+    <meta name="description" content="Fast Zim brings together food delivery, essential shopping, and reliable transport for communities across Zimbabwe." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="brand-wrap">
+          <div class="brand-mark">FZ</div>
+          <div class="brand-text">
+            <span class="brand-name">Fast Zim</span>
+            <small>Move faster. Live better.</small>
           </div>
         </div>
-      </div>
-    </section>
-    <section id="research" class="hidden bg-background px-margin-mobile py-24 md:px-margin-desktop">
-      <div class="mx-auto max-w-6xl rounded-[28px] border border-outline-variant/30 bg-surface-container-low p-8 md:p-12">
-        <div class="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p class="text-label-caps font-label-caps text-primary-fixed-dim tracking-[0.3em] uppercase">Research</p>
-            <h2 class="mt-3 text-headline-md font-headline-md text-on-surface">AI Systems, Autonomy, and Optimization</h2>
-          </div>
-          <span class="text-code-sm font-code-sm text-on-surface-variant">High-level systems thinking for applied AI.</span>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#platform">Why Fast Zim</a>
+          <a href="#onboarding">Join</a>
+          <a href="secure-workspace/index.html">Private Workspace</a>
+        </nav>
+
+        <div class="header-actions">
+          <a href="#onboarding" class="btn btn-ghost">Sign Up</a>
+          <a href="#onboarding" class="btn btn-primary">Order Now</a>
         </div>
-        <div class="grid gap-6 md:grid-cols-2">
-          <article class="rounded-3xl border border-outline-variant/20 bg-surface p-8 transition hover:border-primary-container hover:-translate-y-1">
-            <div class="mb-6 flex items-center justify-between">
-              <span class="text-primary-fixed-dim text-3xl material-symbols-outlined">psychology</span>
-              <span class="text-code-sm font-code-sm text-on-surface-variant">01</span>
+      </header>
+
+      <main>
+        <section class="hero" id="home">
+          <div class="hero-copy">
+            <span class="eyebrow">The Zimbabwean everyday app</span>
+            <h1>Fast food, local essentials, and rides — all in one place.</h1>
+            <p>
+              Fast Zim brings together the convenience of food delivery, neighbourhood shopping,
+              and dependable transport so Zimbabweans can move, order, and connect without the wait.
+            </p>
+
+            <div class="cta-row">
+              <a href="#services" class="btn btn-primary">Order Now</a>
+              <a href="#onboarding" class="btn btn-secondary">Book a Ride</a>
             </div>
-            <h3 class="text-2xl font-headline-md text-on-surface mb-3">AI Strategy Synthesis</h3>
-            <p class="text-body-md font-body-md text-on-surface-variant">Translating complex AI capability into management systems with clear objectives, risk controls, and operational feedback loops.</p>
-          </article>
-          <article class="rounded-3xl border border-outline-variant/20 bg-surface p-8 transition hover:border-primary-container hover:-translate-y-1">
-            <div class="mb-6 flex items-center justify-between">
-              <span class="text-primary-fixed-dim text-3xl material-symbols-outlined">account_tree</span>
-              <span class="text-code-sm font-code-sm text-on-surface-variant">02</span>
+
+            <div class="trust-line">
+              <span><strong>12k+</strong> orders every week</span>
+              <span><strong>700+</strong> local partners</span>
+              <span><strong>24/7</strong> service support</span>
             </div>
-            <h3 class="text-2xl font-headline-md text-on-surface mb-3">Agentic Architecture</h3>
-            <p class="text-body-md font-body-md text-on-surface-variant">Designing autonomous workflows where specialized agents collaborate, assess, and deliver results with minimal human supervision.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-    <section id="education" class="hidden interface-section section-transition px-margin-mobile py-24 md:px-margin-desktop">
-      <div class="mx-auto max-w-6xl">
-        <div class="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p class="text-label-caps font-label-caps uppercase tracking-[0.3em] text-on-tertiary">Education</p>
-            <h2 class="mt-3 text-headline-md font-headline-md text-on-tertiary">Core Competencies</h2>
           </div>
-          <span class="text-code-sm font-code-sm text-on-tertiary-fixed-variant">Integrated academic and service-industry insights.</span>
-        </div>
-        <div class="grid gap-6 md:grid-cols-12">
-          <div class="col-span-12 md:col-span-7 rounded-[32px] border border-outline-variant/20 bg-surface p-8 shadow-xl">
-            <div class="mb-8">
-              <div class="flex items-center gap-3 text-primary-fixed-dim">
-                <span class="material-symbols-outlined text-4xl">menu_book</span>
-                <span class="text-code-sm font-code-sm uppercase tracking-[0.28em]">Academic Focus</span>
+
+          <div class="hero-panel" aria-label="Fast Zim app preview">
+            <div class="phone-card">
+              <div class="phone-topbar">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
               </div>
-              <h3 class="mt-6 text-3xl font-headline-md text-on-tertiary">Strategic Management & Global Service</h3>
-            </div>
-            <p class="text-body-md font-body-md text-on-tertiary-fixed-variant">Rigorous coursework in international service industry management, ethical leadership, and cross-cultural operations. Building a strategic framework for global teams and executive decision-making.</p>
-            <div class="mt-8 grid gap-4 sm:grid-cols-2">
-              <div class="rounded-3xl border border-outline-variant/20 bg-tertiary p-5">
-                <p class="text-code-sm font-code-sm text-on-tertiary-fixed-variant">Core Area</p>
-                <p class="mt-2 text-body-md font-body-md text-on-tertiary">Strategic Planning</p>
-              </div>
-              <div class="rounded-3xl border border-outline-variant/20 bg-tertiary p-5">
-                <p class="text-code-sm font-code-sm text-on-tertiary-fixed-variant">Core Area</p>
-                <p class="mt-2 text-body-md font-body-md text-on-tertiary">Operational Ethics</p>
+
+              <div class="app-screen">
+                <div class="mini-header">
+                  <span>Fast Zim</span>
+                  <span class="status-pill">Live</span>
+                </div>
+
+                <div class="service-tabs">
+                  <button class="tab active">Food &amp; Shops</button>
+                  <button class="tab">Ride</button>
+                </div>
+
+                <div class="service-list">
+                  <div class="service-item">
+                    <div class="service-icon food">🍽️</div>
+                    <div>
+                      <strong>Family takeaway</strong>
+                      <small>12 min away</small>
+                    </div>
+                    <span>$18.50</span>
+                  </div>
+
+                  <div class="service-item">
+                    <div class="service-icon shop">🛒</div>
+                    <div>
+                      <strong>Groceries</strong>
+                      <small>Local market</small>
+                    </div>
+                    <span>$24.00</span>
+                  </div>
+
+                  <div class="service-item driver-item">
+                    <div class="service-icon ride">🚕</div>
+                    <div>
+                      <strong>Ride to CBD</strong>
+                      <small>Driver arriving</small>
+                    </div>
+                    <span>$9.80</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-span-12 md:col-span-5 rounded-[32px] border border-outline-variant/20 bg-surface p-8 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-3 text-primary-fixed-dim">
-                <span class="material-symbols-outlined text-4xl">diversity_3</span>
-                <span class="text-code-sm font-code-sm uppercase tracking-[0.28em]">Service Excellence</span>
+        </section>
+
+        <section class="services" id="services">
+          <div class="section-heading">
+            <span class="eyebrow">Two powerful branches</span>
+            <h2>Everything you need, right when you need it.</h2>
+          </div>
+
+          <div class="service-branch-grid">
+            <article class="branch-card food-branch">
+              <div class="branch-top">
+                <span class="branch-icon">🍽️</span>
+                <span class="chip">Food &amp; Services</span>
               </div>
-              <h3 class="mt-6 text-3xl font-headline-md text-on-tertiary">Client-Centered Operations</h3>
-              <p class="mt-4 text-body-md font-body-md text-on-tertiary-fixed-variant">Cultivating customer-first experiences in global service environments, backed by data-driven quality assurance and continuous improvement.</p>
+              <h3>Order food, groceries, and essentials.</h3>
+              <p>
+                Buy from local restaurants, supermarkets, and shops across Zimbabwe with the speed,
+                convenience, and trusted service you expect from a local-first platform.
+              </p>
+              <ul>
+                <li>Food delivery</li>
+                <li>Local shops &amp; supermarkets</li>
+                <li>Same-day essentials</li>
+                <li>Vendor marketplace</li>
+              </ul>
+              <a href="#onboarding" class="text-link">Become a vendor</a>
+            </article>
+
+            <article class="branch-card ride-branch">
+              <div class="branch-top">
+                <span class="branch-icon">🚕</span>
+                <span class="chip alt">Transport</span>
+              </div>
+              <h3>Ride, deliver, and move your business forward.</h3>
+              <p>
+                Whether it is a quick city trip, urgent delivery, or last-mile logistics, Fast Zim connects
+                riders and drivers in a safer, faster, and more reliable way.
+              </p>
+              <ul>
+                <li>Ride-hailing</li>
+                <li>Parcel delivery</li>
+                <li>Business logistics</li>
+                <li>Driver partner network</li>
+              </ul>
+              <a href="#onboarding" class="text-link">Join as a driver</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="platform" id="platform">
+          <div class="section-heading centered">
+            <span class="eyebrow">Why Zimbabwe chooses Fast Zim</span>
+            <h2>Built for local life, local business, and local opportunity.</h2>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <span class="feature-icon">⚡</span>
+              <h3>Fast delivery</h3>
+              <p>Get orders, groceries, and rides when timing matters most.</p>
+            </article>
+
+            <article class="feature-card">
+              <span class="feature-icon">🏪</span>
+              <h3>Support local businesses</h3>
+              <p>Help shops, restaurants, and drivers grow with a trusted digital marketplace.</p>
+            </article>
+
+            <article class="feature-card">
+              <span class="feature-icon">🧭</span>
+              <h3>Made for the city</h3>
+              <p>From shopping trips to business deliveries, Fast Zim moves with your routine.</p>
+            </article>
+
+            <article class="feature-card">
+              <span class="feature-icon">💬</span>
+              <h3>Easy communication</h3>
+              <p>Simple ordering and booking flows designed for everyday users and local partners.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="onboarding" id="onboarding">
+          <div class="section-heading centered">
+            <span class="eyebrow">Join Fast Zim</span>
+            <h2>Choose your path and get started in minutes.</h2>
+          </div>
+
+          <div class="signup-tabs">
+            <button class="tab-button active" data-tab="service-providers">Service Providers</button>
+            <button class="tab-button" data-tab="regular-users">Regular Users</button>
+          </div>
+
+          <div class="tab-panel active" id="service-providers-panel">
+            <div class="provider-grid">
+              <article class="provider-card active" data-role="Taxi Driver">
+                <span class="provider-icon">🚖</span>
+                <h3>Taxi Drivers</h3>
+                <p>Join as a driver and start serving customers in your area.</p>
+              </article>
+
+              <article class="provider-card" data-role="Shop Owner">
+                <span class="provider-icon">🏬</span>
+                <h3>Shops</h3>
+                <p>List your products and reach more shoppers nearby.</p>
+              </article>
+
+              <article class="provider-card" data-role="Supermarket">
+                <span class="provider-icon">🛍️</span>
+                <h3>Supermarkets</h3>
+                <p>Offer groceries and fast deliveries to households and businesses.</p>
+              </article>
             </div>
-            <a href="#resume" class="mt-8 inline-flex items-center justify-center rounded-full border border-primary-fixed-dim bg-primary-container px-6 py-3 text-label-caps font-label-caps text-on-primary-container transition hover:bg-primary-fixed">View Resume</a>
+
+            <form class="provider-form" id="provider-form">
+              <div class="form-row two-col">
+                <label>
+                  <span>Full name</span>
+                  <input type="text" name="provider-name" placeholder="Enter your full name" required />
+                </label>
+
+                <label>
+                  <span>Business / Service type</span>
+                  <select name="provider-role" id="provider-role">
+                    <option value="Taxi Driver">Taxi Driver</option>
+                    <option value="Shop Owner">Shop Owner</option>
+                    <option value="Supermarket">Supermarket</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="form-row two-col">
+                <label>
+                  <span>Phone number</span>
+                  <input type="tel" name="provider-phone" placeholder="+263 ..." required />
+                </label>
+
+                <label>
+                  <span>Email address</span>
+                  <input type="email" name="provider-email" placeholder="you@example.com" required />
+                </label>
+              </div>
+
+              <div class="form-row two-col">
+                <label>
+                  <span>Location</span>
+                  <input type="text" name="provider-location" placeholder="Where are you based?" required />
+                </label>
+
+                <label>
+                  <span>Vehicle / Store type</span>
+                  <input type="text" name="provider-details" placeholder="Taxi, grocery store, mini-market..." required />
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary wide-btn">Register as Provider</button>
+            </form>
+          </div>
+
+          <div class="tab-panel" id="regular-users-panel">
+            <form class="user-form" id="user-form">
+              <div class="user-form-inner">
+                <label>
+                  <span>Phone Number</span>
+                  <input type="tel" name="user-phone" placeholder="+263 ..." required />
+                </label>
+
+                <label>
+                  <span>Email Address</span>
+                  <input type="email" name="user-email" placeholder="you@example.com" required />
+                </label>
+
+                <button type="submit" class="btn btn-primary wide-btn">Create My Account</button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="brand-wrap footer-brand-wrap">
+              <div class="brand-mark">FZ</div>
+              <div class="brand-text">
+                <span class="brand-name">Fast Zim</span>
+                <small>Fast, local, trusted.</small>
+              </div>
+            </div>
+            <p>Powering everyday convenience across Zimbabwe through food, shopping, and transport.</p>
+          </div>
+
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <a href="#services">Food &amp; Services</a>
+            <a href="#services">Transport</a>
+            <a href="secure-workspace/index.html">Private Workspace</a>
+            <a href="#onboarding">Join now</a>
+          </div>
+
+          <div class="footer-contact">
+            <h4>Contact</h4>
+            <p>Email: mhembereashley2@gmail.com</p>
+            <p>Alternate Email: 114122117@gms.tcu.edu.tw</p>
+            <p>Location: Tzu Chi University, Taiwan</p>
           </div>
         </div>
-        <div class="mt-10 grid gap-6 md:grid-cols-3">
-          <article class="rounded-[28px] border border-outline-variant/20 bg-surface p-6">
-            <h4 class="text-label-caps font-label-caps text-on-tertiary-fixed mb-3">Global Perspective</h4>
-            <p class="text-body-md font-body-md text-on-tertiary-fixed-variant">Analyzing international market dynamics and preparing service strategies for multicultural operating environments.</p>
-          </article>
-          <article class="rounded-[28px] border border-outline-variant/20 bg-surface p-6">
-            <h4 class="text-label-caps font-label-caps text-on-tertiary-fixed mb-3">System Thinking</h4>
-            <p class="text-body-md font-body-md text-on-tertiary-fixed-variant">Combining academic rigor with systems-level design to support resilient AI-enabled management processes.</p>
-          </article>
-          <article class="rounded-[28px] border border-outline-variant/20 bg-surface p-6">
-            <h4 class="text-label-caps font-label-caps text-on-tertiary-fixed mb-3">Operational Clarity</h4>
-            <p class="text-body-md font-body-md text-on-tertiary-fixed-variant">Focus on structured delivery, measurable outcomes, and disciplined executive communication.</p>
-          </article>
+
+        <div class="footer-bottom">
+          <p>© 2024 Ashley Mhembere. SYSTEM_STATUS: OPERATIONAL</p>
         </div>
-      </div>
+      </footer>
     </div>
-  </section>
-  <section id="resume" class="hidden bg-[#2a0d4d] px-margin-mobile py-24 md:px-margin-desktop">
-    <div class="mx-auto max-w-6xl rounded-[32px] border border-transparent bg-[#250a3f] p-8 md:p-12 text-white">
-      <div class="grid gap-8 lg:grid-cols-2">
-        <div>
-          <p class="text-label-caps font-label-caps text-white uppercase tracking-[0.3em]">Resume</p>
-          <h2 class="mt-4 text-headline-md font-headline-md text-white">Contact & Professional Summary</h2>
-          <p class="mt-6 text-body-md font-body-md text-white/80">Available for internships, AI project collaboration, and service industry consulting. Skilled in strategic planning, autonomous workflow design, and cross-cultural leadership development.</p>
-        </div>
-        <div class="space-y-4 rounded-[28px] border border-outline-variant/20 bg-surface p-6">
-          <div>
-            <span class="text-code-sm font-code-sm text-on-surface-variant">Email</span>
-            <p class="mt-1 text-body-md font-body-md text-on-surface">contact@intellect-kinetic.example</p>
-          </div>
-          <div>
-            <span class="text-code-sm font-code-sm text-on-surface-variant">Location</span>
-            <p class="mt-1 text-body-md font-body-md text-on-surface">Tzu Chi University, Taiwan</p>
-          </div>
-          <div>
-            <span class="text-code-sm font-code-sm text-on-surface-variant">Availability</span>
-            <p class="mt-1 text-body-md font-body-md text-on-surface">Open for collaboration</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <footer class="bg-background border-t border-outline-variant/20 px-margin-mobile py-10 md:px-margin-desktop">
-    <div class="mx-auto max-w-6xl flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-      <p class="text-code-sm font-code-sm text-on-surface-variant">© 2024 Ashley Mhembere. SYSTEM_STATUS: OPERATIONAL</p>
-      <div class="flex flex-wrap gap-4 text-code-sm font-code-sm text-outline">
-        <a href="#" class="hover:text-primary-fixed-dim transition">GitHub</a>
-        <a href="#" class="hover:text-primary-fixed-dim transition">LinkedIn</a>
-        <a href="#" class="hover:text-primary-fixed-dim transition">ResearchGate</a>
-        <a href="#" class="hover:text-primary-fixed-dim transition">Twitter</a>
-      </div>
-    </div>
-  </footer>
-</main>
-</body>
+
+    <script src="script.js"></script>
+  </body>
 </html>

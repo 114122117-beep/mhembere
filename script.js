@@ -1,169 +1,58 @@
-﻿window.tailwind = window.tailwind || {};
-window.tailwind.config = {
-  darkMode: "class",
-  theme: {
-    extend: {
-      colors: {
-        background: "#0b162c",
-        "tertiary-fixed": "#ffffff",
-        "inverse-primary": "#0047a0",
-        "primary-fixed-dim": "#ffffff",
-        "surface-tint": "#0052cc",
-        outline: "#4f6b9f",
-        "on-primary-container": "#ffffff",
-        "on-primary-fixed-variant": "#ffffff",
-        "surface-bright": "#132945",
-        "on-surface": "#ffffff",
-        "on-primary": "#ffffff",
-        "on-secondary-fixed-variant": "#cbd7ef",
-        "error-container": "#93000a",
-        "surface-container": "#10213f",
-        "surface-container-high": "#13274a",
-        "primary-container": "#0052cc",
-        "on-secondary-container": "#cbd7ef",
-        "secondary-fixed": "#7b92b0",
-        "surface-variant": "#15254a",
-        "surface-container-lowest": "#0b162c",
-        "surface-container-low": "#0f1f3f",
-        "primary-fixed": "#0052cc",
-        "on-tertiary-container": "#ffffff",
-        "secondary-container": "#1c2d54",
-        "surface-dim": "#0b162c",
-        "inverse-on-surface": "#f8f9ff",
-        secondary: "#8a9cc9",
-        "tertiary-container": "#0f1f3f",
-        "on-error-container": "#ffffff",
-        "on-secondary-fixed": "#d8e0f2",
-        tertiary: "#0b162c",
-        "on-tertiary-fixed": "#ffffff",
-        "surface-container-highest": "#1b3058",
-        primary: "#0052cc",
-        "on-tertiary-fixed-variant": "#cbd7ef",
-        error: "#d32f2f",
-        "on-background": "#ffffff",
-        "on-error": "#690005",
-        "secondary-fixed-dim": "#a9b6d5",
-        "tertiary-fixed-dim": "#8c9ac1",
-        "on-primary-fixed": "#ffffff",
-        surface: "#0b162c",
-        "on-tertiary": "#ffffff",
-        "on-secondary": "#cbd7ef",
-        "inverse-surface": "#ffffff",
-        "on-surface-variant": "#c1cfe8",
-        "outline-variant": "#4f6b9f",
-      },
-      borderRadius: {
-        DEFAULT: "0.25rem",
-        lg: "0.5rem",
-        xl: "0.75rem",
-        full: "9999px",
-      },
-      spacing: {
-        "margin-mobile": "16px",
-        gutter: "24px",
-        "margin-desktop": "64px",
-        unit: "4px",
-        "container-max": "1440px",
-      },
-      fontFamily: {
-        "label-caps": ["JetBrains Mono"],
-        "headline-md": ["Hanken Grotesk"],
-        "code-sm": ["JetBrains Mono"],
-        "display-lg": ["Hanken Grotesk"],
-        "display-lg-mobile": ["Hanken Grotesk"],
-        "body-md": ["Inter"],
-      },
-      fontSize: {
-        "label-caps": ["12px", { lineHeight: "1.0", letterSpacing: "0.1em", fontWeight: "600" }],
-        "headline-md": ["32px", { lineHeight: "1.2", fontWeight: "500" }],
-        "code-sm": ["13px", { lineHeight: "1.5", fontWeight: "400" }],
-        "display-lg": ["72px", { lineHeight: "1.1", letterSpacing: "-0.04em", fontWeight: "700" }],
-        "display-lg-mobile": ["40px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
-        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
-      },
-    },
-  },
-};
+﻿document.addEventListener('DOMContentLoaded', () => {
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+  const providerCards = document.querySelectorAll('.provider-card');
+  const providerRole = document.getElementById('provider-role');
 
-document.addEventListener('DOMContentLoaded', () => {
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileMenuClose = document.getElementById('mobile-menu-close');
-  const mobileLinks = document.querySelectorAll('#mobile-menu a');
+  tabButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const target = button.dataset.tab;
 
-  const setMobileMenuOpen = (open) => {
-    if (!mobileMenu) {
-      return;
-    }
-
-    mobileMenu.classList.toggle('hidden', !open);
-    document.body.classList.toggle('overflow-hidden', open);
-    if (mobileMenuButton) {
-      mobileMenuButton.setAttribute('aria-expanded', open ? 'true' : 'false');
-    }
-  };
-
-  if (mobileMenuButton) {
-    mobileMenuButton.addEventListener('click', () => {
-      setMobileMenuOpen(mobileMenu?.classList.contains('hidden'));
+      tabButtons.forEach((item) => item.classList.toggle('active', item === button));
+      tabPanels.forEach((panel) => {
+        panel.classList.toggle('active', panel.id === `${target}-panel`);
+      });
     });
-  }
-
-  if (mobileMenuClose) {
-    mobileMenuClose.addEventListener('click', () => setMobileMenuOpen(false));
-  }
-
-  mobileLinks.forEach((link) => {
-    link.addEventListener('click', () => setMobileMenuOpen(false));
   });
 
-  window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
-      setMobileMenuOpen(false);
-    }
+  providerCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      providerCards.forEach((item) => item.classList.toggle('active', item === card));
+      if (providerRole && card.dataset.role) {
+        providerRole.value = card.dataset.role;
+      }
+    });
   });
 
-  const sectionLinks = document.querySelectorAll('[data-section]');
-  const sections = document.querySelectorAll('main section[id]');
+  const providerForm = document.getElementById('provider-form');
+  const userForm = document.getElementById('user-form');
 
-  const showSection = (sectionId) => {
-    sections.forEach((section) => {
-      section.classList.toggle('hidden', section.id !== sectionId);
-    });
-    const target = document.getElementById(sectionId);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  sectionLinks.forEach((link) => {
-    link.addEventListener('click', (event) => {
+  if (providerForm) {
+    providerForm.addEventListener('submit', (event) => {
       event.preventDefault();
-      const sectionId = link.getAttribute('data-section');
-      if (sectionId) {
-        showSection(sectionId);
-      }
-      if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-        setMobileMenuOpen(false);
-      }
+      const formData = new FormData(providerForm);
+      const fullName = (formData.get('provider-name') || '').toString().trim();
+      const serviceType = (formData.get('provider-role') || '').toString().trim();
+
+      alert(`${serviceType} registration submitted for ${fullName}. Fast Zim team will contact you soon.`);
+      providerForm.reset();
     });
-  });
+  }
 
-  const interfaceSection = document.getElementById('education');
-  if (interfaceSection) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            document.documentElement.classList.remove('dark');
-          } else {
-            document.documentElement.classList.add('dark');
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
+  if (userForm) {
+    userForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const formData = new FormData(userForm);
+      const phone = (formData.get('user-phone') || '').toString().trim();
+      const email = (formData.get('user-email') || '').toString().trim();
 
-    observer.observe(interfaceSection);
+      if (!phone || !email) {
+        alert('Please add your phone number and email address.');
+        return;
+      }
+
+      alert('Your Fast Zim account is ready. Welcome aboard!');
+      userForm.reset();
+    });
   }
 });
