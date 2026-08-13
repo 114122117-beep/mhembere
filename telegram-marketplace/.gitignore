@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.production.local
+
+# Build outputs
+/build
+/.next
+out/
+dist/
+*.tsbuildinfo
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Database
+postgres_data/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Cache
+.cache/
+.next/cache/
