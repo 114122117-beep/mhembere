@@ -3,8 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="title" content="Fast Zim | Food Delivery, Taxi Services & Secure Workspace in Zimbabwe" />
+    <meta name="description" content="Fast Zim brings together food delivery, local shopping, trusted taxi services, and secure workspace access for everyday convenience in Zimbabwe." />
+    <meta name="keywords" content="Fast Zim, food delivery Zimbabwe, taxi services Zimbabwe, local shopping, secure workspace, everyday convenience" />
+    <meta name="author" content="Fast Zim" />
+    <meta property="og:title" content="Fast Zim | Everyday Convenience in Zimbabwe" />
+    <meta property="og:description" content="Fast food, trusted rides, and secure workspace access in one modern platform." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="1968.jpg" />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#ff8a3d" />
     <title>Fast Zim | Food, Shopping & Ride-Hailing in Zimbabwe</title>
-    <meta name="description" content="Fast Zim brings together food delivery, essential shopping, and reliable transport for communities across Zimbabwe." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -36,6 +45,108 @@
       </header>
 
       <main>
+        <section class="welcome-flow" aria-live="polite">
+          <div class="flow-step intro-step active" id="welcome-step">
+            <div class="flow-card app-style-card">
+              <div class="app-brand-row">
+                <div class="brand-mark app-brand-mark">FZ</div>
+                <span class="eyebrow app-eyebrow">Welcome</span>
+              </div>
+
+              <h2>Welcome to Fast Zim</h2>
+              <p class="intro-copy">
+                From quick meals and trusted rides to secure access for your everyday work, Fast Zim brings
+                convenience, reliability, and peace of mind together in one simple experience.
+              </p>
+
+              <div class="company-rules-box">
+                <div class="rules-header">
+                  <span class="rules-icon">✓</span>
+                  <h3>Community Guidelines</h3>
+                </div>
+                <ul class="rules-list">
+                  <li>Be respectful and kind in every interaction.</li>
+                  <li>Share accurate details so we can serve you smoothly and reliably.</li>
+                  <li>Protect your account and keep your personal information secure.</li>
+                  <li>Use the platform safely and in line with local rules and best practices.</li>
+                </ul>
+              </div>
+
+              <label class="agree-row" for="company-rules-check">
+                <input type="checkbox" id="company-rules-check" />
+                <span>I agree to the Community Guidelines.</span>
+              </label>
+
+              <div class="flow-actions">
+                <button type="button" class="btn btn-primary flow-next" data-target="auth-step" id="rules-continue" disabled>Agree &amp; Continue</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flow-step" id="auth-step">
+            <div class="flow-card">
+              <span class="eyebrow">Access</span>
+              <h2>Sign up for new users and log in for members</h2>
+
+              <form class="flow-form auth-form active" id="flow-signup-form">
+                <label>
+                  <span>Full name</span>
+                  <input type="text" name="full-name" placeholder="Enter your full name" required />
+                </label>
+
+                <label>
+                  <span>Phone number</span>
+                  <input type="tel" name="phone" placeholder="+263 ..." required />
+                </label>
+
+                <label>
+                  <span>Email address</span>
+                  <input type="email" name="email" placeholder="you@example.com" required />
+                </label>
+
+                <label>
+                  <span>Password</span>
+                  <input type="password" name="password" placeholder="Create a password" required />
+                </label>
+
+                <label>
+                  <span>Member login</span>
+                  <input type="text" name="login-identifier" placeholder="Existing member email or phone" />
+                </label>
+              </form>
+
+              <div class="flow-actions">
+                <button type="button" class="btn btn-secondary flow-back" data-target="welcome-step">Back</button>
+                <button type="button" class="btn btn-primary flow-next" data-target="choose-step">Continue</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="flow-step" id="choose-step">
+            <div class="flow-card">
+              <span class="eyebrow">Choose</span>
+              <h2>Select where you want to use</h2>
+
+              <div class="service-choice-grid">
+                <button type="button" class="service-choice" data-service="food">
+                  <span class="choice-icon">🍽️</span>
+                  <span>Food Ordering</span>
+                </button>
+
+                <button type="button" class="service-choice" data-service="taxi">
+                  <span class="choice-icon">🚕</span>
+                  <span>Taxi Services</span>
+                </button>
+
+                <button type="button" class="service-choice" data-service="private">
+                  <span class="choice-icon">🔒</span>
+                  <span>My Private Workspace</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section class="hero" id="home">
           <div class="hero-copy">
             <span class="eyebrow">The Zimbabwean everyday app</span>
