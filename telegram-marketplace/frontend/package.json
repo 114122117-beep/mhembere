@@ -1,0 +1,29 @@
+{
+  "name": "telegram-marketplace-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Telegram Clone with Marketplace",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "next": "^14.0.0",
+    "socket.io-client": "^4.6.1",
+    "axios": "^1.5.0",
+    "zustand": "^4.4.1",
+    "lucide-react": "^0.263.1"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.0",
+    "postcss": "^8.4.28",
+    "autoprefixer": "^10.4.15",
+    "typescript": "^5.2.2",
+    "@types/node": "^20.5.0",
+    "@types/react": "^18.2.21"
+  }
+}

@@ -181,12 +181,18 @@ function handleLogout() {
   showLoginError('');
 }
 
+function getSelectedLanguage() {
+  const selected = targetLanguage && targetLanguage.value ? targetLanguage.value : 'English';
+  return selected === 'Auto-detect' ? 'English' : selected;
+}
+
 function renderAssignmentDraft() {
   const title = projectTitleInput.value.trim() || 'Untitled Project';
   const subject = subjectInput.value.trim() || 'General study';
   const brief = briefInput.value.trim() || 'Discuss the key ideas and practical value of the project.';
   const source = sourceInfoInput.value.trim() || 'No source information provided yet.';
   const tone = toneSelect.value;
+  const preferredLanguage = getSelectedLanguage();
 
   const draft = `
 # ${title}
@@ -196,6 +202,9 @@ ${subject}
 
 ## Assignment Purpose
 ${brief}
+
+## Preferred output language
+${preferredLanguage}
 
 ## Key Ideas
 - Overview of the main concept and context
@@ -224,19 +233,20 @@ function translateText(text, language) {
   if (!text || !text.trim()) return 'No content available for translation.';
 
   const cleanText = text.trim();
-  return `[${language} translation preview]\n\n${cleanText}\n\nThis draft is structured for ${language} presentation and can be refined for formal academic writing, a slide-friendly format, or final presentation notes.`;
+  const outputLanguage = language === 'Auto-detect' ? 'English' : language;
+  return `[${outputLanguage} translation preview]\n\n${cleanText}\n\nThis draft is structured for ${outputLanguage} presentation and can be refined for formal academic writing, a slide-friendly format, or final presentation notes.`;
 }
 
 function handleGenerate() {
   const generatedText = renderAssignmentDraft();
-  const targetLanguageText = targetLanguage.value;
+  const targetLanguageText = getSelectedLanguage();
   const translated = translateText(generatedText, targetLanguageText);
   translationOutput.value = translated;
 }
 
 function handleTranslate() {
   const currentText = assignmentOutput.textContent || assignmentOutput.innerText || '';
-  const currentLanguage = targetLanguage.value;
+  const currentLanguage = getSelectedLanguage();
   translationOutput.value = translateText(currentText, currentLanguage);
 }
 
